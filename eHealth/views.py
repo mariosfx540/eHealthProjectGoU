@@ -3,7 +3,6 @@ from eHealth.models import Category, Page
 
 
 
-# Create your views here.
 def index(request):
 
     context_dict={}

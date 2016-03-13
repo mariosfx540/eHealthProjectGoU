@@ -34,6 +34,11 @@ ALLOWED_HOSTS = []
 TEMPLATE_PATH = os.path.join(BASE_DIR,'templates')
 
 
+TEMPLATE_DIRS = (
+
+    TEMPLATE_PATH,
+)
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,7 +47,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'eHealth',
-    'registration'
+
+
 )
 
 MIDDLEWARE_CLASSES = (
