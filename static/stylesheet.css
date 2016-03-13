@@ -18,11 +18,16 @@
     padding-left: 20px;
     }
 
-.navbar-brand {
+.navbar-header {
     font-size: 300%;
     margin-right: 30px;
     }
 
+.navbar-header h1 {
+    font-size: 90%;
+    margin-left: 30px;
+    color: #5683A9;
+    }
 
 .searching {
     margin-top: 250px;

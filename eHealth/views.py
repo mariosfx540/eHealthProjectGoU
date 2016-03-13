@@ -10,8 +10,7 @@ def index(request):
 
     context_dict['pages'] = ["www.mimis.com", "www.poyias.com"]
 
-
-    response = render(request,'eHealth/index.html', context_dict)
+    response = render(request, 'eHealth/index.html', context_dict)
 
     return response
 
