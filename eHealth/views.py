@@ -34,3 +34,8 @@ def category(request, slug_name):
     return render(request, 'eHealth/category.html', context_dict)
 
 
+def searching(request):
+
+    context_dict = {}
+
+    return render(request, 'eHealth/searching.html', context_dict)

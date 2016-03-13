@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:background-image="http://www.w3.org/1999/xhtml">
     <head>
 
         <title>eHealthCare</title>
@@ -9,6 +9,7 @@
 
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
@@ -17,6 +18,9 @@
     </head>
 
   <body>
+
+
+
 
     <div class="navbar navbar-fixed-top" role="navigation">
 
@@ -33,8 +37,7 @@
             <div class="tabs">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href=">Register Here</a></li>
-                    <li><a href="#">QuerySearch</a></li>
+                    <li><a href="{% url 'search' %}">QuerySearch</a></li>
                     <li><a href="#">My Profile</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

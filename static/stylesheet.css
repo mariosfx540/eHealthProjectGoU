@@ -10,9 +10,16 @@
     float: right;
     margin-right: 40px;
     margin-top: 150px;
-    }
+  }
 
+input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px white inset;
+}
 
+input:-webkit-autofill:focus {
+    -webkit-box-shadow:0 0 0 50px white inset;
+
+}
 
 .checkbox {
     padding-left: 20px;
@@ -78,7 +85,14 @@ footer {
     }
 
 #shared {
-    margin-right: 170px;
+    margin-right: 229px;
     margin-top: 150px;
     float: right;
     }
+
+
+
+html {
+  background-image: url('images/health.jpg');
+  background-size:100% auto;
+}
