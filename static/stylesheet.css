@@ -1,0 +1,79 @@
+.tabs {
+    margin-top: 10px;
+    float:right;
+    }
+
+
+
+.login{
+    width: 250px;
+    float: right;
+    margin-right: 40px;
+    margin-top: 150px;
+    }
+
+
+
+.checkbox {
+    padding-left: 20px;
+    }
+
+.navbar-brand {
+    font-size: 300%;
+    margin-right: 30px;
+    }
+
+
+.searching {
+    margin-top: 250px;
+    margin-left: 100px;
+    }
+
+.searching input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.searchig input input{
+    border: 0;
+    box-shadow: none;
+}
+
+.searching input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+.searching input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+
+
+footer {
+    margin-top: 220px;
+    position:relative;
+    border-top: 1px solid;
+    }
+
+
+#popular {
+    margin-left: 20px;
+    margin-top: 150px;
+    float: left;
+    }
+
+#shared {
+    margin-right: 170px;
+    margin-top: 150px;
+    float: right;
+    }
