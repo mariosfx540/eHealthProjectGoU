@@ -3,5 +3,5 @@ from eHealth import views
 
 urlpatterns = (
                url(r'^$', views.index, name="index"),
-               url(r'searching/', views.searching, name='search'),
+               url(r'^searching/', views.searching, name='search'),
                )

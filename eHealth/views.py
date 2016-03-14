@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from eHealth.models import Category, Page
+from eHealth.bing import run_query
+
 
 
 
@@ -35,7 +37,12 @@ def category(request, slug_name):
 
 
 def searching(request):
+    result_list = []
 
-    context_dict = {}
+    if request.method == 'POST':
+        query = request.POST['query'].strip()
 
-    return render(request, 'eHealth/searching.html', context_dict)
+        if query:
+            result_list = run_query(query)
+
+    return(request, 'eHealth/searching.html', {'result_list': result_list})

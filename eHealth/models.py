@@ -60,6 +60,17 @@ class Page(models.Model):
     def __unicode__(self):
         return self.title
 
+class Saved_Page(models.Model):
+    link = models.OneToOneField(Page)
+    is_public = models.BooleanField(default=False)
+    user = models.ForeignKey(Searcher)
+
+
+
+
+
+
+
 
 # class Search(models.Model): #this pertains to the Search History  ("a search" => "searches")
 #    query=models.CharField(max_length=1000)
@@ -86,10 +97,7 @@ class Page(models.Model):
 #     user=models.ForeignKey(Searcher)
 #     #what is the unicdoe? return query.__unicode__()
 #
-# class Saved_Page(models.Model):
-#     link=models.OneToOneField(Page)
-#     is_public= models.BooleanField(default=False)
-#     user=models.ForeignKey(Searcher)
+
 #     saved_timestamp=models.DateTimeField( auto_now_add=True)
 #     shared_timestamp=models.DateTimeField(default=timezone.now())#not automatic #really set when public is set true
 #     #unicode? link.title?
