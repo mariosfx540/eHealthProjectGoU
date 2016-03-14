@@ -40,12 +40,16 @@
                     <li><a href="{% url 'search' %}">QuerySearch</a></li>
                     <li><a href="#">My Profile</a></li>
                     <li><a href="#">About Us</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="{% url 'registration_register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 </ul>
             </div>
     </div>
+    <div class="row">
+        <div class = "col-md-12 main">
+            {% block body_block %}{% endblock %}
+        </div>
+    </div>
 
-    {% block body_block %}{% endblock %}
 
 
 

@@ -95,7 +95,10 @@ html {
     width: 400px;
     }
 
-
+.main {
+    position: absolute;
+    top:51px;
+}
 
 
 
