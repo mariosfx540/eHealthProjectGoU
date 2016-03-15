@@ -1,0 +1,71 @@
+{% extends "eHealth/base.html" %}
+
+{% load staticfiles %}
+
+{% block body_block %}
+
+            <div class="searching col-md-7">
+
+
+                <div class="input-group">
+                            <input type="text" class="form-control input-lg" placeholder="Search..." />
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-lg" type="button">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </span>
+                </div>
+
+
+                <div id="popular">
+                    {% if pages %}
+                        <h3>Most Popular Articles</h3>
+                        <ul class="list-group">
+                            {% for page in pages %}
+                             <li>{{ page }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <strong>There are no categories present.</strong>
+                    {% endif %}
+                </div>
+
+                <div id="shared">
+                    {% if pages %}
+                        <h3>Shared Articles</h3>
+                        <ul class="list-group">
+                            {% for page in pages %}
+                             <li>{{ page }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <strong>There are no categories present.</strong>
+                    {% endif %}
+                </div>
+
+
+            </div>
+
+
+
+
+
+        <div class="login col-md-5">
+                <form id="log-form" class="form-signin">
+                    {% csrf_token %}
+                    <br />
+                    <h2 class="form-signin-heading">Please login</h2>
+                    <input type="text" class="form-control" name="username" placeholder="Email Address" required="" />
+                    <input id="pass" type="password" class="form-control" name="password" placeholder="Password" required=""/>
+                    <label class="checkbox"><input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me</label>
+                    {% if user.is_authorised %}
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Logout</button>
+                    {% else %}
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                    {% endif %}
+                </form>
+        </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+Hey bros,
+
+As you can see I commented out some models which i think
+we should thing about them in the end! We want to complete the
+basic tasks/requirements first that Leif wants:
+
+1) Categories
+2) Pages
+3) Login/Logout
+4) Registration
+5) Add Categories
+6) Add Pages
+7) Share/Private pages/categories
+8) Searching APIs functionality
+
+So, those are the main requirements. We dont need a second app,
+nor anything extra such as, Category_lists, Saved Pages, History
+etc etc. We'll think about them if we have enough time left.
+
+Next meeting on Monday, after 6.
+
+
