@@ -102,6 +102,69 @@ html {
 
 
 
+.form-horizontal {
+    color: #5683A9 ;
+
+   -webkit-text-stroke-width: 0.2px;
+   -webkit-text-stroke-color: #5683A9;
+
+    font-size: x-large;
+    font-size: 17px;
+margin-left: 3%;
+margin-top: 7%;
+word-spacing: 5px;
 
 
 
+
+}
+
+.form-horizontal input{
+   border-bottom-color: #b3b3b3;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: #b3b3b3;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: #b3b3b3;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: #b3b3b3;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-top-style: solid;
+    border-top-width: 1px;
+
+}
+.form-horizontal .required .helptext{
+    display: none;
+
+}
+.form-horizontal input[type="submit"] {
+    text-decoration: solid;
+  color: black;
+ background: #5683A9;
+ padding: 15px 40px;
+ border-radius: 4px;
+ font-weight: 700;
+ text-transform: uppercase;
+ transition: all 0.2s ease-in-out;
+    font-family: Courier, Monaco, monospace;
+
+    font-size: large;
+border-color: #b3b3b3;
+
+}
+
+.form-horizontal input[type="submit"]:hover {
+  color: rgba(5, 5, 2,0.1);
+ box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+font-size: 100%;
+
+}
+.form-horizontal p{
+    width: 200px;
+
+}
