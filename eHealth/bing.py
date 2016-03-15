@@ -7,6 +7,7 @@ def run_query(search_terms):
     root_url = 'https://api.datamarket.azure.com/Bing/Search/'
     source = 'Web'
 
+
     results_per_page = 200
     offset = 0
 

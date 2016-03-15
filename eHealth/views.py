@@ -26,6 +26,7 @@ def category(request, slug_name):
 
     try:
         category = Category.objects.get(slug = slug_name)
+
         context_dict['category_name'] = category.name
 
         context_dict['category'] = category
@@ -38,16 +39,6 @@ def category(request, slug_name):
     return render(request, 'eHealth/category.html', context_dict)
 
 
-# def searching(request):
-#     result_list = []
-#
-#     if request.method == 'POST':
-#         query = request.POST['query'].strip()
-#
-#         if query:
-#             result_list = run_query(query)
-#
-#     return render(request, 'eHealth/searching.html', {'result_list': result_list})
 
 def searching(request):
 

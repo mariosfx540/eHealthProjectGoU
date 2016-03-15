@@ -4,6 +4,7 @@
     }
 
 .login{
+<<<<<<< HEAD
     padding-bottom: 20px;
     padding-left: 200px;
     padding-right: 20px;
@@ -13,6 +14,14 @@
 #log-form {
     width: 240px;
 }
+=======
+    width: 250px;
+    float: right;
+    margin-right: 40px;
+    margin-top: 150px;
+  }
+
+>>>>>>> f04724dcd0e0c7bb49ae7c6345568bd0e92061dd
 
 .checkbox {
     padding-left: 20px;
@@ -20,6 +29,10 @@
 
 .navbar-header {
     font-size: 300%;
+<<<<<<< HEAD
+=======
+    margin-right: 30px;
+>>>>>>> f04724dcd0e0c7bb49ae7c6345568bd0e92061dd
     }
 
 .navbar-header h1 {
@@ -29,7 +42,12 @@
     }
 
 .searching {
+<<<<<<< HEAD
     padding-top: 250px;
+=======
+    margin-top: 260px;
+    margin-left: 80px;
+>>>>>>> f04724dcd0e0c7bb49ae7c6345568bd0e92061dd
     }
 
 .searching input{
@@ -60,6 +78,7 @@
     border-left: solid 1px #ccc;
 }
 
+<<<<<<< HEAD
 #popular {
     position: relative;
     top: 60px;
@@ -70,7 +89,7 @@
     float: right;
     bottom: 55px;
     padding-right: 130px;
-    }
+
 
 html {
   background-image: url('images/health.jpg');
@@ -87,9 +106,20 @@ html {
 .main {
     height: 100%;
     width: 100%;
-    position: absolute;
     top:51px;
-}
+
+#search_2 {
+    width: 400px;
+    }
+
+
+
+
+
+
+
+
+<<<<<<< HEAD
 
 
 
@@ -106,9 +136,5 @@ html {
 
 
 
-
-
-
-
-
-
+=======
+>>>>>>> f04724dcd0e0c7bb49ae7c6345568bd0e92061dd
