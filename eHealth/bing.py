@@ -1,14 +1,24 @@
 import json
 import urllib, urllib2
+<<<<<<< HEAD
 from keys import BING_API_KEY
 
+=======
+#from keys import BING_API_KEY
+
+BING_API_KEY = ''
+>>>>>>> f04724dcd0e0c7bb49ae7c6345568bd0e92061dd
 def run_query(search_terms):
     # Specify the base
     root_url = 'https://api.datamarket.azure.com/Bing/Search/'
     source = 'Web'
 
+<<<<<<< HEAD
 
     results_per_page = 200
+=======
+    results_per_page = 5
+>>>>>>> f04724dcd0e0c7bb49ae7c6345568bd0e92061dd
     offset = 0
 
     query = "'{0}'".format(search_terms)

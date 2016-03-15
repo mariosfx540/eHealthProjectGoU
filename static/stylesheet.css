@@ -4,7 +4,6 @@
     }
 
 .login{
-<<<<<<< HEAD
     padding-bottom: 20px;
     padding-left: 200px;
     padding-right: 20px;
@@ -14,14 +13,7 @@
 #log-form {
     width: 240px;
 }
-=======
-    width: 250px;
-    float: right;
-    margin-right: 40px;
-    margin-top: 150px;
-  }
 
->>>>>>> f04724dcd0e0c7bb49ae7c6345568bd0e92061dd
 
 .checkbox {
     padding-left: 20px;
@@ -29,10 +21,6 @@
 
 .navbar-header {
     font-size: 300%;
-<<<<<<< HEAD
-=======
-    margin-right: 30px;
->>>>>>> f04724dcd0e0c7bb49ae7c6345568bd0e92061dd
     }
 
 .navbar-header h1 {
@@ -42,13 +30,8 @@
     }
 
 .searching {
-<<<<<<< HEAD
     padding-top: 250px;
-=======
-    margin-top: 260px;
-    margin-left: 80px;
->>>>>>> f04724dcd0e0c7bb49ae7c6345568bd0e92061dd
-    }
+
 
 .searching input{
     padding: 3px;
@@ -78,7 +61,7 @@
     border-left: solid 1px #ccc;
 }
 
-<<<<<<< HEAD
+
 #popular {
     position: relative;
     top: 60px;
@@ -97,16 +80,19 @@ html {
   /**min-height: 600px; */
   height: 100%;
   background-repeat: no-repeat;
+
 }
 
 #check-search {
     margin-top: 30px;
     }
 
+<<<<<<< HEAD
 .main {
     height: 100%;
     width: 100%;
     top:51px;
+
 
 #search_2 {
     width: 400px;
@@ -119,7 +105,6 @@ html {
 
 
 
-<<<<<<< HEAD
 
 
 
@@ -134,7 +119,3 @@ html {
 
 
 
-
-
-=======
->>>>>>> f04724dcd0e0c7bb49ae7c6345568bd0e92061dd

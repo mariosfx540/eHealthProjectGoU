@@ -4,9 +4,6 @@ from eHealth.bing import run_query
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
-
-
-
 def index(request):
 
     context_dict={}
@@ -27,6 +24,7 @@ def category(request, slug_name):
     try:
         category = Category.objects.get(slug = slug_name)
 
+
         context_dict['category_name'] = category.name
 
         context_dict['category'] = category
@@ -39,9 +37,7 @@ def category(request, slug_name):
     return render(request, 'eHealth/category.html', context_dict)
 
 
-
 def searching(request):
-
     result_list = []
 
     if request.method == 'POST':
@@ -65,3 +61,4 @@ def searching(request):
         result_list = paginator.page(paginator.num_pages)
 
     return render(request, 'eHealth/searching.html', {'result_list': result_list})
+

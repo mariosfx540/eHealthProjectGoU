@@ -5,6 +5,7 @@
 {% block body_block %}
 
         <div class="searching col-md-5">
+
             <form class="form-inline" id="user_form" method="post" action="{% url 'search' %}">
                 {% csrf_token %}
                 <div class="input-group">
@@ -20,6 +21,7 @@
 
 
         </div>
+
 
 
         <div class="col-md-7">
@@ -46,11 +48,6 @@
 <!---    bootstrap-Components -->
 
 
-
-
-
-
-<<<<<<< HEAD
 {% endblock %}
 
 
@@ -66,6 +63,4 @@
                 <!--<h5>No results for this search</h5>-->
                 <!--{% endif %}-->
             <!--</div>
-=======
-{% endblock %}
->>>>>>> f04724dcd0e0c7bb49ae7c6345568bd0e92061dd
+
