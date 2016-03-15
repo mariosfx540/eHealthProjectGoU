@@ -1,3 +1,12 @@
 /.idea
+<<<<<<< HEAD
+<<<<<<< HEAD
+*pyc
+=======
 *.pyc
 keys.py
+>>>>>>> f04724dcd0e0c7bb49ae7c6345568bd0e92061dd
+=======
+*.pyc
+keys.py
+>>>>>>> f04724dcd0e0c7bb49ae7c6345568bd0e92061dd

@@ -5,12 +5,13 @@
 {% block body_block %}
 
         <div class="searching col-md-5">
-            <form class="form-inline" id="user_form" method="post" action="{% url 'searching' %}">
+
+            <form class="form-inline" id="user_form" method="post" action="{% url 'search' %}">
                 {% csrf_token %}
                 <div class="input-group">
-                    <input  id="search_2" type="text" class="form-control input-lg" placeholder="Search..." />
+                    <input  id="query" name="query" type="text" class="form-control input-lg" placeholder="Search..." />
                     <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
+                        <button class="btn btn-info btn-lg" type="submit">
                             <i class="glyphicon glyphicon-search"></i>
                         </button>
                     </span>
@@ -23,34 +24,43 @@
 
 
 
+        <div class="col-md-7">
 
-        <div id="filters col-md-7">
+            <div class="panel-tabs">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
+                  <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+                  <li><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
+                  <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+                </ul>
 
-            <div class="panel">
-                {% if result_list %}
-                    <div class="panel-heading">
-                    <h3 class="panel-title">Results</h3>
-                    <!-- Display search results in an ordered list -->
-                    <div class="panel-body">
-                        <div class="list-group">
-                            {% for result in result_list %}
-                                <div class="list-group-item">
-                                    <h4 class="list-group-item-heading"><a href="{{ result.link }}">{{ result.title }}</a></h4>
-                                    <p class="list-group-item-text">{{ result.summary }}</p>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endif %}
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="home">...</div>
+                    <div class="tab-pane" id="profile">...</div>
+                    <div class="tab-pane" id="messages">...</div>
+                    <div class="tab-pane" id="settings">...</div>
                 </div>
             </div>
+
         </div>
 
 <!---    bootstrap-Components -->
 
 
-
-
-
-
 {% endblock %}
+
+
+                <!--{% if result_list %}-->
+                <!--<h4>-->
+                    <!--<ol>-->
+                        <!--{% for result in result_list %}-->
+                        <!--<li><a href="{{ result.url }}">{{ result.title }}</a></li>-->
+                        <!--{% endfor %}-->
+                    <!--</ol>-->
+                <!--</h4>-->
+                <!--{% else %}-->
+                <!--<h5>No results for this search</h5>-->
+                <!--{% endif %}-->
+            <!--</div>
+

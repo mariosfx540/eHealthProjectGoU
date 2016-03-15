@@ -4,11 +4,15 @@
     }
 
 .login{
-    width: 250px;
-    float: right;
-    margin-right: 40px;
-    margin-top: 150px;
+    padding-bottom: 20px;
+    padding-left: 200px;
+    padding-right: 20px;
+    padding-top: 130px;
   }
+
+#log-form {
+    width: 240px;
+}
 
 
 .checkbox {
@@ -17,7 +21,6 @@
 
 .navbar-header {
     font-size: 300%;
-    margin-right: 30px;
     }
 
 .navbar-header h1 {
@@ -27,9 +30,8 @@
     }
 
 .searching {
-    margin-top: 260px;
-    margin-left: 80px;
-    }
+    padding-top: 250px;
+
 
 .searching input{
     padding: 3px;
@@ -60,45 +62,57 @@
 }
 
 
-
-footer {
-    margin-top: 220px;
-    position:relative;
-    border-top: 1px solid;
-    }
-
-
 #popular {
-    margin-left: 20px;
-    margin-top: 150px;
-    float: left;
+    position: relative;
+    top: 60px;
     }
 
 #shared {
-    margin-right: 229px;
-    margin-top: 150px;
+    position: relative;
     float: right;
-    }
+    bottom: 55px;
+    padding-right: 130px;
+
 
 html {
   background-image: url('images/health.jpg');
   background-size:100% auto;
   /**min-height: 600px; */
   height: 100%;
+  background-repeat: no-repeat;
+
 }
 
 #check-search {
     margin-top: 30px;
     }
 
+<<<<<<< HEAD
+.main {
+    height: 100%;
+    width: 100%;
+    top:51px;
+
+
 #search_2 {
     width: 400px;
     }
 
-.main {
-    position: absolute;
-    top:51px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
