@@ -104,21 +104,25 @@ html {
 
 
 .form-horizontal {
-    color: #5683A9 ;
+    color: #5683A9;
 
-   -webkit-text-stroke-width: 0.2px;
-   -webkit-text-stroke-color: #5683A9;
+    -webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: #5683A9;
 
     font-size: x-large;
     font-size: 17px;
-margin-left: 3%;
-margin-top: 7%;
-word-spacing: 5px;
-
-
-
+    margin-left: 1%;
+    margin-top: 1%;
+    word-spacing: 5px;
 
 }
+
+
+
+
+
+
+
 
 .form-horizontal input{
    border-bottom-color: #b3b3b3;
@@ -139,23 +143,24 @@ word-spacing: 5px;
     border-top-width: 1px;
 
 }
-.form-horizontal .required .helptext{
+.form-horizontal .required .helptext {
     display: none;
-
 }
+
+
+
 .form-horizontal input[type="submit"] {
-    text-decoration: solid;
-  color: black;
+  color: ghostwhite;
  background: #5683A9;
  padding: 15px 40px;
  border-radius: 4px;
- font-weight: 700;
+ font-weight: 600;
  text-transform: uppercase;
  transition: all 0.2s ease-in-out;
-    font-family: Courier, Monaco, monospace;
-
-    font-size: large;
+    font-family:'Helvetica Neue',sans-serif;
+    font-size: medium;
 border-color: #b3b3b3;
+
 
 }
 
