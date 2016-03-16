@@ -2,9 +2,9 @@ import json
 import urllib, urllib2
 from keys import BING_API_KEY
 
-def run_query(search_terms):
+def med_query(search_terms):
     # Specify the base
-    root_url = 'https://api.datamarket.azure.com/Bing/Search/'
+    root_url = 'https://apps.nlm.nih.gov/medlineplus/services/mpconnect.cfm'
     source = 'Web'
 
     results_per_page = 40
@@ -25,10 +25,9 @@ def run_query(search_terms):
     # Setup authentication with the Bing servers.
     # The username MUST be a blank string, and put in your API key!
     username = ''
-    bing_api_key = BING_API_KEY
 
     password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
-    password_mgr.add_password(None, search_url, username, bing_api_key)
+    password_mgr.add_password(None, search_url, username, None)
 
     results = []
 

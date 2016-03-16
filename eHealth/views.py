@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from eHealth.models import Category, Page
 from eHealth.bing import run_query
+from eHealth.medLine import med_query
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
@@ -38,27 +39,28 @@ def category(request, slug_name):
 
 
 def searching(request):
-    result_list = []
+    bing_list = []
+
+    medLine_list = []
+
 
     if request.method == 'POST':
         query = request.POST['query'].strip()
 
         if query:
-            result_list = run_query(query)
-
-    paginator = Paginator(result_list, 10)
+            bing_list = run_query(query)
 
 
-    page = request.GET.get('page')
-    print page
-    try:
-        result_list = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        result_list = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        result_list = paginator.page(paginator.num_pages)
+    healthFinder_list = []
 
-    return render(request, 'eHealth/searching.html', {'result_list': result_list})
+
+    context_dic = { 'bing_list': bing_list,
+                    'med': medLine_list,
+                    'health': healthFinder_list,
+                    'all_results': bing_list + medLine_list + healthFinder_list
+                    }
+
+    response = render(request,'eHealth/searching.html',context_dic)
+
+    return response
 

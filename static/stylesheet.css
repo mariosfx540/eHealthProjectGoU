@@ -5,9 +5,9 @@
 
 .login{
     padding-bottom: 20px;
-    padding-left: 200px;
+    padding-left: 240px;
     padding-right: 20px;
-    padding-top: 130px;
+    padding-top: 20px;
   }
 
 #log-form {
@@ -30,7 +30,7 @@
     }
 
 .searching {
-    padding-top: 250px;
+    padding-top: 150px;
 }
 
 
@@ -82,7 +82,6 @@ html {
   /**min-height: 600px; */
   height: 100%;
   background-repeat: no-repeat;
-
 }
 
 #check-search {
@@ -111,17 +110,12 @@ html {
 
     font-size: x-large;
     font-size: 17px;
+
     margin-left: 1%;
     margin-top: 1%;
     word-spacing: 5px;
 
 }
-
-
-
-
-
-
 
 
 .form-horizontal input{
@@ -174,3 +168,27 @@ font-size: 100%;
     width: 200px;
 
 }
+
+.result_engines {
+    padding: 20px;
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid;
+    height: 320px;
+    background-color: white;
+    margin-top: 150px;
+}
+
+
+.tab-content {
+  overflow-y: scroll;
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  padding-top: 40px;
+}
+
+#query_2 input{
+    width: 400px;
+    }
+
