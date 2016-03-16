@@ -4,7 +4,8 @@
 
 {% block body_block %}
 
-        <div class="searching col-md-5">
+
+        <div class="searching col-md-5" id="query_2">
 
             <form class="form-inline" id="user_form" method="post" action="{% url 'search' %}">
                 {% csrf_token %}
@@ -19,48 +20,79 @@
             </form>
 
 
-
         </div>
 
 
 
         <div class="col-md-7">
 
-            <div class="panel-tabs">
-                <ul class="nav nav-tabs" role="tablist">
-                  <li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
-                  <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-                  <li><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
-                  <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
+            <div class="result_engines">
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#all_results">Mashup</a></li>
+                    <li><a data-toggle="tab" href="#bing">Bing Engine</a></li>
+                    <li><a data-toggle="tab" href="#med">MedLine Engine</a></li>
+                    <li><a data-toggle="tab" href="#health">HealthFinder Engine</a></li>
                 </ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content">
-                    <div class="tab-pane active" id="home">...</div>
-                    <div class="tab-pane" id="profile">...</div>
-                    <div class="tab-pane" id="messages">...</div>
-                    <div class="tab-pane" id="settings">...</div>
+                    <div class="tab-pane active" id="bing">
+                        {% if bing_list %}
+                        <h4>
+                            <ol>
+                                {% for result in bing_list %}
+                                <li><a href="{{ result.url }}">{{ result.title }}</a></li>
+                                {% endfor %}
+                            </ol>
+                        </h4>
+                        {% endif %}
+                    </div>
+
+                    <div class="tab-pane" id="med">
+                        {% if med %}
+                        <h4>
+                            <ol>
+                                {% for result in med %}
+                                <li><a href="{{ result.url }}">{{ result.title }}</a></li>
+                                {% endfor %}
+                            </ol>
+                        </h4>
+                        {% endif %}
+                    </div>
+
+                    <div class="tab-pane" id="health">
+                        {% if health %}
+                        <h4>
+                            <ol>
+                                {% for result in health %}
+                                <li><a href="{{ result.url }}">{{ result.title }}</a></li>
+                                {% endfor %}
+                            </ol>
+                        </h4>
+                        {% endif %}
+                    </div>
+
+                    <div class="tab-pane" id="all_results">
+                        {% if all_results %}
+                        <h4>
+                            <ol>
+                                {% for result in all_result %}
+                                <li><a href="{{ result.url }}">{{ result.title }}</a></li>
+                                {% endfor %}
+                            </ol>
+                        </h4>
+                        {% endif %}
+                    </div>
+
                 </div>
             </div>
 
         </div>
 
-<!---    bootstrap-Components -->
-
 
 {% endblock %}
 
 
-                <!--{% if result_list %}-->
-                <!--<h4>-->
-                    <!--<ol>-->
-                        <!--{% for result in result_list %}-->
-                        <!--<li><a href="{{ result.url }}">{{ result.title }}</a></li>-->
-                        <!--{% endfor %}-->
-                    <!--</ol>-->
-                <!--</h4>-->
-                <!--{% else %}-->
-                <!--<h5>No results for this search</h5>-->
-                <!--{% endif %}-->
-            <!--</div>
+
 

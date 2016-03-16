@@ -48,9 +48,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'eHealth',
     'registration',
-    'bootstrap3'
-
-
 )
 
 MIDDLEWARE_CLASSES = (
