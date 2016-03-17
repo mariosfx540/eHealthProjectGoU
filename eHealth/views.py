@@ -3,8 +3,8 @@ from eHealth.models import Category, Page
 from eHealth.bing import run_query
 from eHealth.medLine import med_query
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
-
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
 def index(request):
 
     context_dict={}
@@ -64,3 +64,6 @@ def searching(request):
 
     return response
 
+def about(request):
+
+    return render(request, 'eHealth/about.html')
