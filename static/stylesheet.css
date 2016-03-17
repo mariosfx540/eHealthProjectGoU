@@ -188,3 +188,13 @@ font-size: 100%;
     width: 400px;
     }
 
+#pop-up {
+  display: none;
+  position: absolute;
+  width: 280px;
+  padding: 10px;
+  background: #eeeeee;
+  color: #000000;
+  border: 1px solid;
+  font-size: 90%;
+}

@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from eHealth.models import Category, Page
 from eHealth.bing import run_query
-from eHealth.medLine import med_query
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from textblob import TextBlob
+from textstat.textstat import textstat
 
 def index(request):
 
@@ -38,11 +37,14 @@ def category(request, slug_name):
     return render(request, 'eHealth/category.html', context_dict)
 
 
+
+
 def searching(request):
     bing_list = []
 
     medLine_list = []
 
+    healthFinder_list = []
 
     if request.method == 'POST':
         query = request.POST['query'].strip()
@@ -50,8 +52,14 @@ def searching(request):
         if query:
             bing_list = run_query(query)
 
-
-    healthFinder_list = []
+    #results from each API is passed into blob
+    #filtered and returns analytics
+    for result in bing_list:
+        blob = TextBlob(result['summary'])
+        for text in blob.sentences:
+            result['sent'] = (abs(text.sentiment.polarity*10)/2)
+            result['pola'] = (abs(text.sentiment.subjectivity*10)/2)
+            result['reada'] = textstat.flesch_kincaid_grade(result['summary'])
 
 
     context_dic = { 'bing_list': bing_list,

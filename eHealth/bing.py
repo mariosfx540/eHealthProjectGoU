@@ -46,8 +46,9 @@ def run_query(search_terms):
         for result in json_response['d']['results']:
             results.append({
                 'title': result['Title'],
-                'link': result['Url'],
+                'linkURL': result['Url'],
                 'summary': result['Description']})
+
 
     except urllib2.URLError, e:
         print "Error when querying the Bing API: ", e
