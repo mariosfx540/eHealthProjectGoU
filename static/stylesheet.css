@@ -193,6 +193,7 @@ font-size: 100%;
     width: 400px;
     }
 
+
 .hover_element div.pop-up {
     display: none;
     width: 500px;
@@ -214,3 +215,11 @@ font-size: 100%;
     text-decoration: none;
     }
 
+
+.page-header1 {
+
+    font-size: large;
+    color: #5683A9;
+
+}
+>>>>>>> b2e685917f4f3a221074baf72d2915a9bf02dd41

@@ -51,17 +51,18 @@
 
 
         <div class="login col-md-5">
-                {% if user.is_authenticated %}
-                {% else %}
-                <form id="log-form" class="form-signin" role="form" method="post" action=".">
+
+                <form id="log-form" class="form-signin" role="form" method="post" action="/accounts/login/?next=/eHealth/">
+                    {% if user.is_authenticated %}
+                    {% else %}
+>>>>>>> b2e685917f4f3a221074baf72d2915a9bf02dd41
                     {% csrf_token %}
                     <br />
                     <h2 class="form-signin-heading">Please login</h2>
                     <input type="text" class="form-control" name="username" placeholder="Username" required="" />
                     <input id="pass" type="password" class="form-control" name="password" placeholder="Password" required=""/>
                     <label class="checkbox"><input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me</label>
-
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" value="submit">Login</button>
                     {% endif %}
                 </form>
         </div>
