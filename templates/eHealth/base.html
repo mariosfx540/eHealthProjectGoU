@@ -47,6 +47,9 @@
                     <li><a href="#">My Profile</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="{% url 'registration_register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'auth_logout' %}?next=/eHealth/">Logout</a></li>
+                    {% endif %}
                 </ul>
             </div>
 

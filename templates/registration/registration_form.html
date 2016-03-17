@@ -3,11 +3,12 @@
 
 {% block body_block %}
 
-    <form role='form'>
-        <div class="form-horizontal" method="post" action=".">
+    <form role='form' method="post" action="." >
+        <div class="form-horizontal" >
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="submit" value="Submit" />
+                <input maxlength="50" type="submit" value="Submit"/>
+
         </div>
     </form>
 {% endblock %}
