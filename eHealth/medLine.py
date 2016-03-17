@@ -1,7 +1,6 @@
 import urllib, urllib2
 import xmltodict
 import re
-from textblob import TextBlob
 
 
 
@@ -25,7 +24,6 @@ def med_query(search_terms):
         response = xmltodict.parse(response)
         
         for result in response['nlmSearchResult']['list']['document']:
-            summary = re.sub('\<.*?>','', result['content'][-1]['#text'])
             results.append({
                 'title':re.sub('\<.*?\>','', result['content'][0]['#text']),
                 'url':result['@url'],
