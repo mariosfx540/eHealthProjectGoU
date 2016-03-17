@@ -47,7 +47,9 @@
                                 {% for result in bing_list %}
                                 <li><a style="text-decoration: none" class="hover_element" href="{{ result.url }}">{{ result.title }}
                                 <div class="pop-up">
-                                        <p>{{ result.summary }}</p>
+                                        <h5>{{ result.summary }}</h5>
+                                        <hr />
+                                        <h5>Subjectivity: {{ result.subj }}</h5>
                                     </div>
                                 </a></li>
                                 {% endfor %}
@@ -61,7 +63,13 @@
                         <h4>
                             <ol>
                                 {% for result in med %}
-                                <li><a href="{{ result.url }}">{{ result.title }}</a></li>
+                                <li><a style="text-decoration: none" class="hover_element" href="{{ result.url }}">{{ result.title }}
+                                <div class="pop-up">
+                                        <h5>{{ result.summary }}</h5>
+                                        <hr />
+                                        <h5>Subjectivity: {{ result.subj }}</h5>
+                                    </div>
+                                </a></li>
                                 {% endfor %}
                             </ol>
                         </h4>
@@ -73,7 +81,13 @@
                         <h4>
                             <ol>
                                 {% for result in health %}
-                                <li><a href="{{ result.url }}">{{ result.title }}</a></li>
+                                <li><a style="text-decoration: none" class="hover_element" href="{{ result.url }}">{{ result.title }}
+                                <div class="pop-up">
+                                        <h5>{{ result.summary }}</h5>
+                                        <hr />
+                                        <h5>Subjectivity: {{ result.subj }}</h5>
+                                    </div>
+                                </a></li>
                                 {% endfor %}
                             </ol>
                         </h4>
@@ -85,7 +99,13 @@
                         <h4>
                             <ol>
                                 {% for result in all_results %}
-                                <li><a href="{{ result.url }}">{{ result.title }}</a></li>
+                                <li><a style="text-decoration: none" class="hover_element" href="{{ result.url }}">{{ result.title }}
+                                <div class="pop-up">
+                                        <h5>{{ result.summary }}</h5>
+                                        <hr />
+                                        <h5>Subjectivity: {{ result.subj }}</h5>
+                                    </div>
+                                </a></li>
                                 {% endfor %}
                             </ol>
                         </h4>

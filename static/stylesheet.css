@@ -183,7 +183,7 @@ font-size: 100%;
 
 .tab-content {
   overflow-y: auto;
-  height: 300px;
+  height: 400px;
   width: 100%;
   position: absolute;
   padding-top: 50px;
@@ -222,4 +222,4 @@ font-size: 100%;
     color: #5683A9;
 
 }
->>>>>>> b2e685917f4f3a221074baf72d2915a9bf02dd41
+

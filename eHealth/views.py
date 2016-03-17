@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from eHealth.models import Category, Page
 from eHealth.bing import run_query
-from textblob import TextBlob
-from textstat.textstat import textstat
 from django.views.decorators.csrf import csrf_exempt
+from eHealth.medLine import med_query
+from eHealth.myfunctions import text_analysis
 
 
 
@@ -58,15 +58,12 @@ def searching(request):
 
         if query:
             bing_list = run_query(query)
+            medLine_list = med_query(query)
 
-    #results from each API is passed into blob
-    #filtered and returns analytics
-    for result in bing_list:
-        blob = TextBlob(result['summary'])
-        for text in blob.sentences:
-            result['sent'] = (abs(text.sentiment.polarity*10)/2)
-            result['pola'] = (abs(text.sentiment.subjectivity*10)/2)
-            result['reada'] = textstat.flesch_kincaid_grade(result['summary'])
+
+
+    bing_list = text_analysis(bing_list)
+    medLine_list = text_analysis(medLine_list)
 
 
     context_dic = { 'bing_list': bing_list,
@@ -77,7 +74,13 @@ def searching(request):
 
     response = render(request,'eHealth/searching.html',context_dic)
 
+    for result in context_dic['med']:
+        print result
+
     return response
+
+
+
 
 def about(request):
 

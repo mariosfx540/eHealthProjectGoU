@@ -1,54 +1,40 @@
-import json
 import urllib, urllib2
-from keys import BING_API_KEY
+import xmltodict
+import re
+from textblob import TextBlob
+
+
 
 def med_query(search_terms):
-    # Specify the base
-    root_url = 'https://apps.nlm.nih.gov/medlineplus/services/mpconnect.cfm'
-    source = 'Web'
-
-    results_per_page = 40
-    offset = 0
-
-    query = "'{0}'".format(search_terms)
-    query = urllib.quote(query)
-
-    # Construct the latter part of our request's URL.
-    # Sets the format of the response to JSON and sets other properties.
-    search_url = "{0}{1}?$format=json&$top={2}&$skip={3}&Query={4}".format(
+    root_url = 'https://wsearch.nlm.nih.gov/ws/query'
+    source = 'healthTopics'
+    
+    query = urllib.quote(search_terms)
+    query = query.replace('%2B','+')
+    query = query.replace('%27','%22')
+    
+    search_url = "{0}?db={1}&term={2}&rettype=brief".format(
         root_url,
         source,
-        results_per_page,
-        offset,
         query)
-
-    # Setup authentication with the Bing servers.
-    # The username MUST be a blank string, and put in your API key!
-    username = ''
-
-    password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
-    password_mgr.add_password(None, search_url, username, None)
-
+       
     results = []
-
+       
     try:
-        # Prepare for connecting to Bing's servers.
-        handler = urllib2.HTTPBasicAuthHandler(password_mgr)
-        opener = urllib2.build_opener(handler)
-        urllib2.install_opener(opener)
-
         response = urllib2.urlopen(search_url).read()
-
-        # Convert the string response to a Python dictionary object.
-        json_response = json.loads(response)
-
-        for result in json_response['d']['results']:
+        response = xmltodict.parse(response)
+        
+        for result in response['nlmSearchResult']['list']['document']:
+            summary = re.sub('\<.*?>','', result['content'][-1]['#text'])
             results.append({
-                'title': result['Title'],
-                'link': result['Url'],
-                'summary': result['Description']})
+                'title':re.sub('\<.*?\>','', result['content'][0]['#text']),
+                'url':result['@url'],
+                'summary':re.sub('\<.*?\>','', result['content'][-1]['#text']),
+                'source':'MedLine'
+                })
+            
 
-    except urllib2.URLError, e:
-        print "Error when querying the Bing API: ", e
-
+    except urllib2.URLError as e:
+        print "Error when querying the MedLine API: ", e
+        
     return results
