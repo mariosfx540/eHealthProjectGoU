@@ -40,12 +40,16 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
 
-                    <div class="tab-pane active" id="bing">
+                    <div class="tab-pane" id="bing">
                         {% if bing_list %}
                         <h4>
                             <ol>
                                 {% for result in bing_list %}
-                                <li><a href="{{ result.url }}">{{ result.title }}</a></li>
+                                <li><a style="text-decoration: none" class="hover_element" href="{{ result.url }}">{{ result.title }}
+                                <div class="pop-up">
+                                        <p>{{ result.summary }}</p>
+                                    </div>
+                                </a></li>
                                 {% endfor %}
                             </ol>
                         </h4>
@@ -80,7 +84,7 @@
                         {% if all_results %}
                         <h4>
                             <ol>
-                                {% for result in all_result %}
+                                {% for result in all_results %}
                                 <li><a href="{{ result.url }}">{{ result.title }}</a></li>
                                 {% endfor %}
                             </ol>
@@ -88,7 +92,7 @@
                         {% endif %}
                     </div>
 
-                        <!--&lt;!&ndash; HIDDEN / POP-UP DIV &ndash;&gt;-->
+                        <!-- HIDDEN / POP-UP DIV -->
                     <!--<div id="pop-up">-->
                       <!--<h3>Pop-up div Successfully Displayed</h3>-->
                       <!--<p>-->

@@ -46,7 +46,7 @@ def run_query(search_terms):
         for result in json_response['d']['results']:
             results.append({
                 'title': result['Title'],
-                'linkURL': result['Url'],
+                'url': result['Url'],
                 'summary': result['Description']})
 
 

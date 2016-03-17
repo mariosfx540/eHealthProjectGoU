@@ -40,6 +40,9 @@ def category(request, slug_name):
 
 
 def searching(request):
+
+    all_results = []
+
     bing_list = []
 
     medLine_list = []

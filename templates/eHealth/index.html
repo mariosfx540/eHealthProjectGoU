@@ -51,10 +51,9 @@
 
 
         <div class="login col-md-5">
-
+                {% if user.is_authenticated %}
+                {% else %}
                 <form id="log-form" class="form-signin" role="form" method="post" action=".">
-                    {% if user.is_authenticated %}
-                    {% else %}
                     {% csrf_token %}
                     <br />
                     <h2 class="form-signin-heading">Please login</h2>
