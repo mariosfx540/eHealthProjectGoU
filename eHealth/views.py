@@ -64,7 +64,7 @@ def searching(request):
 
     bing_list = text_analysis(bing_list)
     medLine_list = text_analysis(medLine_list)
-
+    #implement HealthFinder when ready!
 
     context_dic = { 'bing_list': bing_list,
                     'med': medLine_list,
