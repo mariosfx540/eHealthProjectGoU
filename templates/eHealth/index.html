@@ -52,18 +52,7 @@
 
         <div class="login col-md-5">
 
-                <form id="log-form" class="form-signing" role="form" method="post" action="/accounts/login/?next=/eHealth/">
-                    {% if user.is_authenticated %}
-                    {% else %}
-                    {% csrf_token %}
-                    <br />
-                    <h2 class="form-signin-heading">Please login</h2>
-                    <input type="text" class="form-control" name="username" placeholder="Username" required="" />
-                    <input id="pass" type="password" class="form-control" name="password" placeholder="Password" required=""/>
-                    <label class="checkbox"><input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me</label>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" value="submit">Login</button>
-                    {% endif %}
-                </form>
+            {% include 'registration/login.html' %}
         </div>
 
 

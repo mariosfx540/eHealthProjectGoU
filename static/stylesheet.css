@@ -204,7 +204,7 @@ font-size: 100%;
     border: 2px solid #73AD21;
     padding: 20px;
     height: 150px;
-
+    padding-top: 10px;
     }
 
 .hover_element:hover div.pop-up {
@@ -214,6 +214,10 @@ font-size: 100%;
 .hover_element:hover div.pop-up p {
     text-decoration: none;
     }
+
+div.pop-up button {
+    border-radius: 10px;
+}
 
 
 .page-header1 {
@@ -347,3 +351,46 @@ input[type=range]::-ms-fill-upper {
 input[type=range]:focus::-ms-fill-upper {
   background: #367ebd;
 }
+
+.btn {
+  display: inline-block;
+  padding: 10px 12px;
+  color: #fff;
+  text-decoration: none;
+  background: $btncolour;
+  border-radius: 3px;
+  }
+
+
+/**************
+***************
+*** FILTERS ***
+***************
+**************/
+
+
+#bingPola {
+    display: inline;
+    width: 150px;
+    text-align: center;
+    padding-left: 10px;
+    }
+
+#bingSubj {
+    display: inline;
+    text-align: left;
+    }
+
+#bingreada {
+    width: 150px;
+    display: inline;
+    padding-left: 10px;
+    text-align: right;
+    }
+
+
+
+/*************
+*************/
+
+
