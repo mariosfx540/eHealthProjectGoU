@@ -4,9 +4,6 @@
 
 {% block body_block %}
 
-
-
-
         <div class="searching col-md-5" id="query_2">
 
             <form class="form-inline" id="user_form" method="post" action="{% url 'search' %}">
@@ -47,9 +44,11 @@
 
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#all_results">Mashup</a></li>
+                        {% if user.is_authenticated %}
                         <li><a data-toggle="tab" href="#bing">Bing Engine</a></li>
                         <li><a data-toggle="tab" href="#med">MedLine Engine</a></li>
                         <li><a data-toggle="tab" href="#health">HealthFinder Engine</a></li>
+                        {% endif %}
                     </ul>
 
                 <!-- Tab panes -->
@@ -69,12 +68,17 @@
                                     <h5 id="bingPola">Polarity: {{ result.pola }}</h5>
                                     <h5 id="bingreada">Readability: {{ result.reada }}</h5>
 
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">SaveTo
-                                    <span class="caret"></span></button>
+
 
                                 </div>
-                                </a></li>
+                                </a><div class="dropdown"><button class="btn btn-primary dropdown-toggle mybtn" type="button" data-toggle="dropdown" data-content="Some content in the popover">SaveTo
+                                    <span class="caret"></span></button><ul class="dropdown-menu">
+                                        <li><a href="#">HTML</a></li>
+                                        <li><a href="#">CSS</a></li>
+                                        <li><a href="#">JavaScript</a></li>
+                                        </ul></div></li>
                                 {% endfor %}
+
                             </ol>
                         </h4>
                         {% endif %}
@@ -87,11 +91,19 @@
                                 {% for result in med %}
                                 <li><a style="text-decoration: none" class="hover_element" href="{{ result.url }}">{{ result.title }}
                                 <div class="pop-up">
+                                        <br/>
                                         <h5>{{ result.summary }}</h5>
-                                        <hr />
-                                        <h5>Subjectivity: {{ result.subj }}</h5>
+                                        <h5 id ="bingSubj">Subjectivity: {{ result.subj }}</h5>
+                                        <h5 id="bingPola">Polarity: {{ result.pola }}</h5>
+                                        <h5 id="bingreada">Readability: {{ result.reada }}</h5>
                                     </div>
-                                </a></li>
+
+                                </a><div class="dropdown"><button class="btn btn-primary dropdown-toggle mybtn" type="button" data-toggle="dropdown" data-content="Some content in the popover">SaveTo
+                                    <span class="caret"></span></button><ul class="dropdown-menu">
+                                        <li><a href="#">HTML</a></li>
+                                        <li><a href="#">CSS</a></li>
+                                        <li><a href="#">JavaScript</a></li>
+                                        </ul></div></li>
                                 {% endfor %}
                             </ol>
                         </h4>
@@ -116,7 +128,7 @@
                         {% endif %}
                     </div>
 
-                    <div class="tab-pane" id="all_results">
+                    <div class="tab-pane active" id="all_results">
                         {% if all_results %}
                         <h4>
                             <ol>
@@ -124,10 +136,16 @@
                                 <li><a style="text-decoration: none" class="hover_element" href="{{ result.url }}">{{ result.title }}
                                 <div class="pop-up">
                                         <h5>{{ result.summary }}</h5>
-                                        <hr />
-                                        <h5>Subjectivity: {{ result.subj }}</h5>
+                                        <h5 id ="bingSubj">Subjectivity: {{ result.subj }}</h5>
+                                        <h5 id="bingPola">Polarity: {{ result.pola }}</h5>
+                                        <h5 id="bingreada">Readability: {{ result.reada }}</h5>
                                     </div>
-                                </a></li>
+                                </a>{% if user.is_authenticated %}<div class="dropdown"><button class="btn btn-primary dropdown-toggle mybtn" type="button" data-toggle="dropdown" data-content="Some content in the popover">SaveTo
+                                    <span class="caret"></span></button><ul class="dropdown-menu">
+                                        <li><a href="#">HTML</a></li>
+                                        <li><a href="#">CSS</a></li>
+                                        <li><a href="#">JavaScript</a></li>
+                                        </ul></div>{% endif %}</li>
                                 {% endfor %}
                             </ol>
                         </h4>
