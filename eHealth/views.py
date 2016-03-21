@@ -4,7 +4,6 @@ from eHealth.bing import run_query
 from eHealth.medLine import med_query
 from eHealth.myfunctions import text_analysis
 from eHealth.healthFinder import health_query
-﻿#from django.shortcuts import render
 from eHealth.models import *
 from eHealth.bing import run_query
 from django.contrib.auth import authenticate, login
