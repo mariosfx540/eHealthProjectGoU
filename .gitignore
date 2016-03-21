@@ -1,4 +1,6 @@
 /.idea
 *pyc
 keys.py
+db.sqlite
+db.sqlite2
 db.sqlite3
