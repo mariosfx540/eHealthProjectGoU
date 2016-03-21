@@ -14,5 +14,6 @@ urlpatterns = (#
                url(r'^addCategory', views.ajax_add_category, name="ajax_add_category"),
                url(r'^pageClick', views.ajax_page_click, name="ajax_page_click"),
                url(r'^Privacy', views.ajax_page_status_change, name="ajax_page_status_change"),
-               url(r'^gpages',views.ajax_get_all_page_statuses, name="ajax_get_all_page_statuses")
-              )
+               url(r'^gpages',views.ajax_get_all_page_statuses, name="ajax_get_all_page_statuses"),
+               url(r'^about', views.about, name='about')
+               )

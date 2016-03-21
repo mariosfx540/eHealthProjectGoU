@@ -1,4 +1,10 @@
 ﻿from django.shortcuts import render
+from eHealth.models import Category
+from eHealth.bing import run_query
+from eHealth.medLine import med_query
+from eHealth.myfunctions import text_analysis
+from eHealth.healthFinder import health_query
+﻿#from django.shortcuts import render
 from eHealth.models import *
 from eHealth.bing import run_query
 from django.contrib.auth import authenticate, login
@@ -115,6 +121,9 @@ def random(request):
 def index(request):
     print 'this is index'
     context_dict={}
+
+def index(request):
+    context_dict = {}
 
     context_dict['pages'] = ["www.mimis.com", "www.poyias.com"]
 
@@ -358,9 +367,9 @@ def user(request):
 def category(request, slug_name):
     context_dict = {}
 
-
     try:
-        category = Category.obects.get(slug = slug_name)
+        category = Category.objects.get(slug=slug_name)
+
         context_dict['category_name'] = category.name
 
         context_dict['category'] = category
@@ -374,12 +383,39 @@ def category(request, slug_name):
 
 
 def searching(request):
-    result_list = []
+    all_results = []
+
+    bing_list = []
+
+    medLine_list = []
+
+    healthFinder_list = []
 
     if request.method == 'POST':
         query = request.POST['query'].strip()
 
         if query:
-            result_list = run_query(query)
+            bing_list = run_query(query)
+            medLine_list = med_query(query)
+            healthFinder_list = health_query(query)
 
-    return(request, 'eHealth/searching.html', {'result_list': result_list})
+    bing_list = text_analysis(bing_list)
+    medLine_list = text_analysis(medLine_list)
+    healthFinder_list = text_analysis(healthFinder_list)
+    # implement HealthFinder when ready!
+
+    context_dic = {'bing_list': bing_list,
+                   'med': medLine_list,
+                   'health': healthFinder_list,
+                   'all_results': bing_list + medLine_list + healthFinder_list
+                   }
+
+    response = render(request, 'eHealth/searching.html', context_dic)
+
+
+
+    return response
+
+
+def about(request):
+    return render(request, 'eHealth/about.html')

@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
 
-
 # Create your models here.
 
 #possibly use this class with one to one correlation with an authorization user class
