@@ -117,11 +117,18 @@
                                 {% for result in health %}
                                 <li><a style="text-decoration: none" class="hover_element" href="{{ result.url }}">{{ result.title }}
                                 <div class="pop-up">
+                                        <br/>
                                         <h5>{{ result.summary }}</h5>
-                                        <hr />
-                                        <h5>Subjectivity: {{ result.subj }}</h5>
+                                        <h5 id ="bingSubj">Subjectivity: {{ result.subj }}</h5>
+                                        <h5 id="bingPola">Polarity: {{ result.pola }}</h5>
+                                        <h5 id="bingreada">Readability: {{ result.reada }}</h5>
                                     </div>
-                                </a></li>
+                                </a><div class="dropdown"><button class="btn btn-primary dropdown-toggle mybtn" type="button" data-toggle="dropdown" data-content="Some content in the popover">SaveTo
+                                    <span class="caret"></span></button><ul class="dropdown-menu">
+                                        <li><a href="#">HTML</a></li>
+                                        <li><a href="#">CSS</a></li>
+                                        <li><a href="#">JavaScript</a></li>
+                                        </ul></div></li>
                                 {% endfor %}
                             </ol>
                         </h4>

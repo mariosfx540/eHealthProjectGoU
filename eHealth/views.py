@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from eHealth.models import Category, Page
+from eHealth.models import Category
 from eHealth.bing import run_query
-from django.views.decorators.csrf import csrf_exempt
 from eHealth.medLine import med_query
 from eHealth.myfunctions import text_analysis
+from eHealth.healthFinder import health_query
 
 
 def index(request):
@@ -49,9 +49,11 @@ def searching(request):
         if query:
             bing_list = run_query(query)
             medLine_list = med_query(query)
+            healthFinder_list = health_query(query)
 
     bing_list = text_analysis(bing_list)
     medLine_list = text_analysis(medLine_list)
+    healthFinder_list = text_analysis(healthFinder_list)
     # implement HealthFinder when ready!
 
     context_dic = {'bing_list': bing_list,
@@ -62,8 +64,7 @@ def searching(request):
 
     response = render(request, 'eHealth/searching.html', context_dic)
 
-    for result in context_dic['bing_list']:
-        print result
+
 
     return response
 
