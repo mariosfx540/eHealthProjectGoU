@@ -1,6 +1,7 @@
-from django.db import models
+﻿from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
+
 
 # Create your models here.
 
@@ -10,12 +11,13 @@ class Searcher(models.Model):
         ('Other', 'Other'),
         ('Male', 'Male'),
         ('Female', 'Female'),
-        )
+        )#
 
     searcher = models.OneToOneField(User)
-
     username= models.CharField(max_length=40, unique=True)
     password= models.CharField(max_length=32);
+    
+    
     email= models.EmailField()
     name= models.CharField(max_length=1000)
     surname=models.CharField(max_length=1000)
@@ -27,7 +29,7 @@ class Searcher(models.Model):
     def __unicode__(self):
         return self.username
 
-
+    #uniquenss= user and name 
 class Category(models.Model):
     user=models.ForeignKey(Searcher)
     is_public=models.BooleanField(default=False)
@@ -43,25 +45,29 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
-
+   #get the category with user and name and from there get the pages 
 class Page(models.Model):
     linkURL=models.URLField()
     title=models.CharField(max_length=200)
     category=models.ForeignKey(Category)
     visits=models.PositiveIntegerField(default=0)
+   # user = models.ForeignKey(Searcher)
 
+    is_public = models.BooleanField(default=False)
     summary=models.CharField(max_length=1000)
-    flesch_score=models.PositiveIntegerField()
+    flesch_score=models.PositiveIntegerField()  #pip install textstat
     polarity_score=models.PositiveIntegerField()
     subjectivity_score=models.PositiveIntegerField()
 
     def __unicode__(self):
         return self.title
-
-class Saved_Page(models.Model):
-    link = models.OneToOneField(Page)
-    is_public = models.BooleanField(default=False)
-    user = models.ForeignKey(Searcher)
+    
+   
+#    # user 
+#class Saved_Page(models.Model):
+#    link = models.OneToOneField(Page)
+#    is_public = models.BooleanField(default=False)
+#    user = models.ForeignKey(Searcher)
 
 
 

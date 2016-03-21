@@ -2,6 +2,10 @@
 
 {% load staticfiles %}
 
+{% block otherSources %}   
+<script src="{{ STATIC_URL }}index_jQuery_func.js"></script>
+{% endblock %}
+
 {% block body_block %}
 
             <div class="searching col-md-7">
@@ -19,11 +23,11 @@
 
                 </form>
                 <div id="popular">
-                    {% if pages %}
-                        <h3 class="title1">Most Popular Articles</h3>
+                    {% if popular_pages %}
+                        <h3 class="title1">Most Popular Public Articles</h3>
                         <ul class="list-group">
-                            {% for page in pages %}
-                             <li>{{ page }}</li>
+                            {% for page in popular_pages %}
+                             <li><a class="openNewWindow" id="{{page.pk}}" href="{{page.linkURL}}">{{ page.title }}</a></li>
                             {% endfor %}
                         </ul>
                     {% else %}
@@ -32,11 +36,11 @@
                 </div>
 
                 <div id="shared">
-                    {% if pages %}
-                        <h3 class="title1">Shared Articles</h3>
+                    {% if shared_pages %}
+                        <h3 class="title1">Other Shared Articles</h3>
                         <ul class="list-group">
-                            {% for page in pages %}
-                             <li>{{ page }}</li>
+                            {% for page in shared_pages %}
+                             <li><a  class="openNewWindow" id="{{page.pk}}" href="{{page.linkURL}}">{{ page.title }}</a></li>
                             {% endfor %}
                         </ul>
                     {% else %}
