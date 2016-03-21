@@ -87,6 +87,7 @@ function apply_checks_privacy_of_pages() {
 $(document).ready(function(){
     //set up
     $(function () {
+        //$(".vehicle").bootstrapSwitch();
        // $(".category_deletions").attr("auto-complete", "off");
        // $(".page_deletions").attr("auto-complete", "off");
         $(".category_deletions").removeAttr('checked');
