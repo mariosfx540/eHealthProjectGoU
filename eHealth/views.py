@@ -123,8 +123,12 @@ def index(request):
 
 def index(request):
     context_dict = {}
+    #public categories
+    list_of_pages=Page.objects.all().filter(is_public=True)
+    context_dict['popular_pages'] = list_of_pages.order_by('-visits')[:5]
+    context_dict['shared_pages'] = list_of_pages.order_by('-visits')[5:10]
 
-    context_dict['pages'] = ["www.mimis.com", "www.poyias.com"]
+    #["www.mimis.com", "www.poyias.com"]
 
     response = render(request, 'eHealth/index.html', context_dict)
 
