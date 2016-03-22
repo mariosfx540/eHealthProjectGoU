@@ -14,8 +14,8 @@ class Searcher(models.Model):
         )#
 
     searcher = models.OneToOneField(User)
-    username= models.CharField(max_length=40, unique=True)
-    password= models.CharField(max_length=32);
+    #username= models.CharField(max_length=40, unique=True, default=None)
+    #password= models.CharField(max_length=32);
     
     
     email= models.EmailField()
