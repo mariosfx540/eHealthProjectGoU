@@ -24,36 +24,36 @@ def populate():
     bla3=False
 
     for oj in User.objects.all():
-        if(oj.username=="blabla1"):
+        if(oj.username=="Jill"):
             bla1=True
-        if(oj.username=="blabla2"):
+        if(oj.username=="Bob"):
             bla2=True
-        if(oj.username=="blabla3"):
+        if(oj.username=="Jen"):
             bla3=True
         print oj.username 
     
     if (bla1==True):
-        User.objects.get_by_natural_key("blabla1").delete()
+        User.objects.get_by_natural_key("Jill").delete()
     if (bla2==True):#
-        User.objects.get_by_natural_key("blabla2").delete()
+        User.objects.get_by_natural_key("Bob").delete()
     if (bla3==True):
-        User.objects.get_by_natural_key("blabla3").delete()
+        User.objects.get_by_natural_key("Jen").delete()
     
 
-    User.objects._create_user(username="blabla1",email="loremipsum1@gmail.com", password="password1", is_staff=True, is_superuser=True)
-    User.objects._create_user(username="blabla2",email="loremipsum2@gmail.com", password="password2", is_staff=True, is_superuser=True)
-    User.objects._create_user(username="blabla3",email="loremipsum3@gmail.com", password="password3", is_staff=True, is_superuser=True)
+    User.objects._create_user(username="Jill",email="loremipsum1@gmail.com", password="Jill", is_staff=True, is_superuser=True)
+    User.objects._create_user(username="Bob",email="loremipsum2@gmail.com", password="Bob", is_staff=True, is_superuser=True)
+    User.objects._create_user(username="Jen",email="loremipsum3@gmail.com", password="Jen", is_staff=True, is_superuser=True)
     
-    print "The following are the usernames... blabla1, blabla2, blabla3"
+    print "The following are the usernames... Jill, Bob, Jen"
 
     
-    u1=  User.objects.get_by_natural_key("blabla1")
-    u2=  User.objects.get_by_natural_key("blabla2")
-    u3=  User.objects.get_by_natural_key("blabla3")
+    u1=  User.objects.get_by_natural_key("Jill")
+    u2=  User.objects.get_by_natural_key("Bob")
+    u3=  User.objects.get_by_natural_key("Jen")
    
-    searcher1= add_Searcher( nam="u1", sname="lastname1", ag=10, gen='Male', userentity=u1)
-    searcher2= add_Searcher( nam="u2", sname="lastname2", ag=20, gen='Female', userentity=u2)
-    searcher3= add_Searcher(  nam="u3", sname="lastname3", ag=30, gen='Male', userentity=u3)
+    searcher1= add_Searcher( nam="Jill", sname="Sierra", ag=10, gen='Female', userentity=u1)
+    searcher2= add_Searcher( nam="Bob", sname="Sierra", ag=20, gen='Male', userentity=u2)
+    searcher3= add_Searcher(  nam="Jen", sname="Sierra", ag=30, gen='Female', userentity=u3)
     
     #searcher1= add_Searcher(uname="blabla11",  em="loremipsum11@gmail.com", sname="lastname1", ag=10, gen='Male', userentity=u1)
     #searcher2= add_Searcher(uname="blabla22", em="loremipsu22@gmail.com",  sname="lastname2", ag=20, gen='Female', userentity=u2)

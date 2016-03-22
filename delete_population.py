@@ -33,11 +33,11 @@ def populate():
         print oj.username 
     
     if (bla1==True):
-        User.objects.get_by_natural_key("blabla1").delete()
+        User.objects.get_by_natural_key("Jill").delete()
     if (bla2==True):
-        User.objects.get_by_natural_key("blabla2").delete()
+        User.objects.get_by_natural_key("Bob").delete()
     if (bla3==True):
-        User.objects.get_by_natural_key("blabla3").delete()
+        User.objects.get_by_natural_key("Jen").delete()
     
 
 

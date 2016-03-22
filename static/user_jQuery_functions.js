@@ -87,10 +87,14 @@ function apply_checks_privacy_of_pages() {
 $(document).ready(function(){
     //set up
     $(function () {
-        //$(".vehicle").bootstrapSwitch();
-       // $(".category_deletions").attr("auto-complete", "off");
+       // $('.category_link').click(function () { alert("Hello");});
+        $(".category_deletions.other").removeAttr('checked');
+        $(".category_deletions").data("on-text", "Delete");
+        $(".category_deletions").data("off-text", "Keep");
+        $(".category_deletions").bootstrapSwitch();
+        //$(".category_deletions").attr("auto-complete", "off");
        // $(".page_deletions").attr("auto-complete", "off");
-        $(".category_deletions").removeAttr('checked');
+      
         $(".page_deletions").removeAttr('checked');
         $("#profile_form").hide();
         popup();
@@ -276,7 +280,7 @@ $(document).ready(function(){
     
     //for deleting categories
     $(function () {
-        $("#delete_categories_button").click(function () {
+        $("#delete_categories_button.btn-primary").click(function () {
             //  e.preventDefault();
             var categories_for_deletion = "";
             //below taken from StackOverflow user113716
@@ -344,7 +348,7 @@ $(document).ready(function(){
          
     //for Adding Categories
     $(function () {
-        $('#add_category_button').click(function () {
+        $('#add_category_button.btn-primary').click(function () {
             jPrompt('Type In The Category Name:', '...', 'Prompt Dialog', function (r) {
                 //validateCategory(R);
                 console.log(r);
@@ -576,7 +580,7 @@ function doAlert(message) {
 //        return cookieValue;
 //    }
 
-
+//THIS CODE WAS TAKEN FOR GITHUB CSRF TOKENS!!!!
 $(function () {
 
 
