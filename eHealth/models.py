@@ -21,7 +21,7 @@ class Searcher(models.Model):
     email= models.EmailField()
     name= models.CharField(max_length=1000)
     surname=models.CharField(max_length=1000)
-    age=models.PositiveIntegerField()
+    age=models.IntegerField(default=0)
     gender=models.CharField(max_length=6, choices=GENDER_OPTIONS)
     # category_list=models.ForeignKey(category_list)
     # search_history=models.ForeignKey(search_history)

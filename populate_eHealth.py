@@ -51,9 +51,9 @@ def populate():
     u2=  User.objects.get_by_natural_key("blabla2")
     u3=  User.objects.get_by_natural_key("blabla3")
    
-    searcher1= add_Searcher(uname="blabla11", pword="password11", em="loremipsum11@gmail.com", nam="u1", sname="lastname1", ag=10, gen='Male', userentity=u1)
-    searcher2= add_Searcher(uname="blabla22", pword="password22", em="loremipsu22@gmail.com", nam="u2", sname="lastname2", ag=20, gen='Female', userentity=u2)
-    searcher3= add_Searcher(uname="blabla33", pword="password33", em="loremipsum33@gmail.com", nam="u3", sname="lastname3", ag=30, gen='Male', userentity=u3)
+    searcher1= add_Searcher( nam="u1", sname="lastname1", ag=10, gen='Male', userentity=u1)
+    searcher2= add_Searcher( nam="u2", sname="lastname2", ag=20, gen='Female', userentity=u2)
+    searcher3= add_Searcher(  nam="u3", sname="lastname3", ag=30, gen='Male', userentity=u3)
     
     #searcher1= add_Searcher(uname="blabla11",  em="loremipsum11@gmail.com", sname="lastname1", ag=10, gen='Male', userentity=u1)
     #searcher2= add_Searcher(uname="blabla22", em="loremipsu22@gmail.com",  sname="lastname2", ag=20, gen='Female', userentity=u2)
@@ -81,37 +81,37 @@ def populate():
         q=add_Page(titl="Page" + str(i), cat=c1, vis=i, link="http://www.google.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
         list.append(q)
     for i in range(10):
-        q=add_Page(titl="Page" + str(i), cat=c2, vis=i, link="http://www.google.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
+        q=add_Page(titl="Page" + str(i), cat=c2, vis=i, link="http://www.espn.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
         list.append(q)
     for i in range(10):
-        q=add_Page(titl="Page" + str(i), cat=c3, vis=i, link="http://www.google.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
+        q=add_Page(titl="Page" + str(i), cat=c3, vis=i, link="http://www.yahoo.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
         list.append(q)
     for i in range(10):
-        q=add_Page(titl="Page" + str(i), cat=c4, vis=i, link="http://www.google.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
+        q=add_Page(titl="Page" + str(i), cat=c4, vis=i, link="http://www.nba.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
         list.append(q)
     for i in range(10):
-        q=add_Page(titl="Page" + str(i), cat=c5, vis=i, link="http://www.google.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
+        q=add_Page(titl="Page" + str(i), cat=c5, vis=i, link="http://www.expedia.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
         list.append(q)
     for i in range(10):
-        q=add_Page(titl="Page" + str(i), cat=c6, vis=i, link="http://www.google.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
+        q=add_Page(titl="Page" + str(i), cat=c6, vis=i, link="http://www.pythonanywhere.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
         list.append(q)
     for i in range(10):
-        q=add_Page(titl="Page" + str(i), cat=c7, vis=i, link="http://www.google.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
+        q=add_Page(titl="Page" + str(i), cat=c7, vis=i, link="http://www.github.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
         list.append(q)
     for i in range(10):
-        q=add_Page(titl="Page" + str(i), cat=c8, vis=i, link="http://www.google.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
+        q=add_Page(titl="Page" + str(i), cat=c8, vis=i, link="http://www.bitbucket.org", summ="search engine", flesch=5, polarity=6, subjectivity=7)
         list.append(q)
     for i in range(10):
-        q=add_Page(titl="Page" + str(i), cat=c9, vis=i, link="http://www.google.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
+        q=add_Page(titl="Page" + str(i), cat=c9, vis=i, link="http://www.wix.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
         list.append(q)
     for i in range(10):
-        q=add_Page(titl="Page" + str(i), cat=c10, vis=i, link="http://www.google.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
+        q=add_Page(titl="Page" + str(i), cat=c10, vis=i, link="http://www.dictionary.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
         list.append(q)
     for i in range(10):
-        q=add_Page(titl="Page" + str(i), cat=c11, vis=i, link="http://www.google.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
+        q=add_Page(titl="Page" + str(i), cat=c11, vis=i, link="http://www.grammarist.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
         list.append(q)
     for i in range(10):
-        q=add_Page(titl="Page" + str(i), cat=c12, vis=i, link="http://www.google.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
+        q=add_Page(titl="Page" + str(i), cat=c12, vis=i, link="http://www.starwars.com", summ="search engine", flesch=5, polarity=6, subjectivity=7)
         list.append(q)   
 
    
@@ -133,9 +133,9 @@ def populate():
     #    for p in Page.objects.filter(category=c):
     #        print "- {0} - {1}".format(str(c), str(p))
  
-def add_Searcher(uname, pword, em, nam, sname, ag, gen, userentity):
-    p = Searcher.objects.get_or_create(username=uname, password=pword,age=ag, searcher=userentity)[0]
-    p.email=em
+def add_Searcher(  nam, sname, ag, gen, userentity):
+    p = Searcher.objects.get_or_create(searcher=userentity)[0]
+    p.email=userentity.email
     p.name=nam
     p.surname=sname
     p.age=ag
