@@ -117,9 +117,9 @@ def random(request):
     response = render(request, 'eHealth/random.html', context_dict)
     return response
 
-def index(request):
-    print 'this is index'
-    context_dict={}
+#def index(request):
+#    print 'this is index'
+#    context_dict={}
 
 def index(request):
     context_dict = {}
@@ -168,16 +168,24 @@ def ajax_delete_pages(request):
     realInfo= information.split(',')
     counter=0
     cate=None
-    
+   # print information
+
+    for categor in Category.objects.all():
+      #  print "name:", categor.name
+        print "slug:",categor.slug
+        if(categor.slug ==realInfo[0]):
+            cate=categor
+
+
     #searcher=Searcher.objects.all().get(searcher=request.user)
     # print "searcher", searcher
     for inf in realInfo:
         if(counter==0):
-            counter=counter+1
-            cate= Category.objects.all().get(slug=inf)
+            counter=counter+1   
+          #  print "inside lop"
         else:
             Page.objects.filter(category=cate).get(pk=int(inf)).delete()
-    print "cate", cate
+    #print "cate", cate
    
     page_list=Page.objects.all().filter(category=cate)
     json_obj={}
@@ -188,7 +196,7 @@ def ajax_delete_pages(request):
         page_obj['linkurl']=page.linkURL
         page_obj['pagepk']=page.pk
         page_obj['pagestatus']=page.is_public
-        print page.linkURL
+      #  print page.linkURL
         json_object_list.append(page_obj)
     json_obj['meta']=json_object_list
     resp= simplejson.dumps(json_obj)

@@ -11,6 +11,11 @@
 //    });
 
 //
+//Taken from Stack Overflow : also I have taken other things
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+}
+
 function popup() {
 
     $(".openNewWindow").click(function (e) {
@@ -29,9 +34,46 @@ function popup() {
     });
 }
 
+
+function private_or_public_checkbox(obj) {
+
+        //alert("Hello!");
+
+        //  if(this.class==".privateVpublic.other")
+    var primarykey = obj.id.toString();
+   // alert(primarykey);
+        var isPublic = 1;
+        //$('#a.b.c')
+        var query = '#' + primarykey + ".privateVpublic";
+
+        //not checked means that the the page is in fact private
+        if ($(query).is(':checked')) {
+            //alert('it is now checked');
+            isPublic = 1;
+        } else {
+            isPublic = 0;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/eHealth/Privacy",
+            data: { pk: primarykey, status: isPublic },
+            success: function (data) {
+                //include below?
+                //$(".privateVpublic").removeAttr('checked');
+            }
+        });
+
+
+}
+
 function private_public_checkbox() {
 
-    $(".privateVpublic").click(function(){
+
+    $(".privateVpublic.other").click(function () {
+        //alert("Hello!");
+
+        //  if(this.class==".privateVpublic.other")
         var primarykey = this.id.toString();
         var isPublic = 1;
         //$('#a.b.c')
@@ -60,6 +102,17 @@ function private_public_checkbox() {
     });
 }
 
+function apply_bootstrapSwitches_page_slider() {
+    $(".page_deletions.other").data("on-text", "Delete");
+    $(".page_deletions.other").data("off-text", "Keep");
+    $(".page_deletions.other").bootstrapSwitch();
+     private_public_checkbox() 
+    $(".privateVpublic.other").data("on-text", "Public");
+    $(".privateVpublic.other").data("off-text", "Private");
+    $(".privateVpublic.other").bootstrapSwitch();
+}
+
+
 function apply_checks_privacy_of_pages() {
     $.ajax({
         type: "POST",
@@ -87,15 +140,23 @@ function apply_checks_privacy_of_pages() {
 $(document).ready(function(){
     //set up
     $(function () {
-       // $(".category_deletions").attr("auto-complete", "off");
+        private_public_checkbox();
+
+        // $('.category_link').click(function () { alert("Hello");});
+        $(".category_deletions.other").removeAttr('checked');
+        $(".category_deletions").data("on-text", "Delete");
+        $(".category_deletions").data("off-text", "Keep");
+        $(".category_deletions").bootstrapSwitch();
+        
+        //$(".category_deletions").attr("auto-complete", "off");
        // $(".page_deletions").attr("auto-complete", "off");
-        $(".category_deletions").removeAttr('checked');
+      
         $(".page_deletions").removeAttr('checked');
         $("#profile_form").hide();
         popup();
         apply_checks_privacy_of_pages();
-        private_public_checkbox();
-        $(".privateVpublic").removeAttr('checked');
+
+        $(".privateVpublic.other").removeAttr('checked');
     });//
     
     //on form submissions for the User Profile
@@ -117,6 +178,7 @@ $(document).ready(function(){
             info = info.concat(",");
 
             random = $('#usernameinp').val();
+            //alert("random is : " + random);
             info = info.concat(random);
             info = info.concat(",");
 
@@ -191,15 +253,17 @@ $(document).ready(function(){
     
     //for deleting pages
     $(function () {
-        $('#delete_pages_button').click(function () {
+        $('#delete_pages_button.btn-primary').click(function () {
             var information = "";
             var categoryInfo = "";
             var counter = 0;
             var category_slug = "";
-            $('.page_deletions').each(function () {
-                categoryInfo=document.getElementById(this.id).value;
-              
-                if (document.getElementById(this.id).checked) {
+            //alert("here");
+            $('.page_deletions.other').each(function () {
+                
+                categoryInfo = this.value;//document.getElementById(this.id).getElementsByClassName("page_deletions")[0].value;
+              //  alert(categoryInfo);
+                if (this.checked) {
                     
                     information = information.concat(this.id.toString()).concat(",");
                     //disable visibility 
@@ -208,7 +272,8 @@ $(document).ready(function(){
             category_slug = categoryInfo;
             information = information.substring(0, information.length - 1);
             categoryInfo = categoryInfo.concat(",").concat(information);
-         //  alert(categoryInfo);
+            //alert(information + "is the information");
+           // alert(categoryInfo);
 
             $.ajax({
                 type: "POST",
@@ -219,20 +284,36 @@ $(document).ready(function(){
                     //add in new html code with the JSON Object 
                     data = $.parseJSON(message);
 
-                    var link_a1 = "<li><input type=\"checkbox\" class=\"page_deletions\" id=\"";//+{{savedPage.pk}}+
+                   //' <a href="#" class=\"list-group-item \">
+                   //                <h4 class="list-group-item-heading category_link" id="{{category.slug}}">{{category.name}}</h4>
+                   //                <input type="checkbox" class="category_deletions other" id="{{category.pk}}" name="delete" value="{{category.pk}}" />
+                    //               <input type="checkbox" class="page_deletions other" id="{{category.pk}}" name="delete" value="{{category.pk}}" />
+                   //            </a>'
+
+
+                    // <h4 class="openNewWindow" id="{{savedPage.pk}}" href="{{savedPage.linkURL}}"> {{savedPage.title}} </h4>
+
+                  //  alert('okay');
+
+                    var link_a1 = "<a href=\"#\" class=\"list-group-item \"><input type=\"checkbox\" class=\"page_deletions other\" id=\"";//+{{savedPage.pk}}+        //changed
                     var link_a2 = "\" name=\"delete\" value=\"".concat(category_slug);//+{{category_slug}}+
                     link_a2 = link_a2.concat("\"/>");
-                    var jaw = ' <a class="openNewWindow" id="';                   //
+                    var jaw = ' <h4 class="openNewWindow" id="';                   //changed 
                     var jaw2 = "\" href=\""                                        //
 
 
                     var link_a = link_a2.concat(jaw);                                //
                     // link_a = "<li><a href=\"";
                     var link_b = "\">";
-                    var link_c = "</a>";//
+                    var link_c = "</h4>";                                          //changed
                     var stringer = "";
-                    var privacyAdder = "</li>";
-                   // $("#saved_pages_list").append("<ul id=\"pages_on_the_fly\"></ul>");
+                    var privacyAdder = "";                                          //changed
+                    // $("#saved_pages_list").append("<ul id=\"pages_on_the_fly\"></ul>");
+                    var xyz = "";
+                    var placeHolder1 = "";
+                    var placeHolder2 = "";
+                    var placeHolder0 = "";
+                    var placeHolder3 = "</a>";
                     for (page = 0; page < data.meta.length; page++) {
                         stringer = link_a;
                         link_a = link_a + data.meta[page].pagepk.toString();           //
@@ -243,16 +324,30 @@ $(document).ready(function(){
 
                         //alert("status of page"+data.meta[page].pagestatus.toString());
                         if (data.meta[page].pagestatus.toString() === "true") {
-                            privacyAdder = " <input type=\"checkbox\" id=\"" + data.meta[page].pagepk.toString() + "\" class=\"privateVpublic\" name=\"private_v_public\" value=\"public\" checked /> " + privacyAdder;
+                            privacyAdder = " <input type=\"checkbox\" id=\"" + data.meta[page].pagepk.toString() + "\" class=\"privateVpublic other\" name=\"private_v_public\" value=\"public\" checked /> " + privacyAdder;
                         } else {
-                            privacyAdder = " <input type=\"checkbox\" id=\"" + data.meta[page].pagepk.toString() + "\" class=\"privateVpublic\" name=\"private_v_public\" value=\"public\" /> " + privacyAdder;
+                            privacyAdder = " <input type=\"checkbox\" id=\"" + data.meta[page].pagepk.toString() + "\" class=\"privateVpublic other\" name=\"private_v_public\" value=\"public\" /> " + privacyAdder;
                         }
                         link_c = link_c + privacyAdder;
 
 
-                        $("#pages_on_the_fly").append(link_a.concat(data.meta[page].linkurl).concat(link_b).concat(data.meta[page].name).concat(link_c));
-                        link_c = "</a>";
-                        privacyAdder = "</li>";
+                        xyz = link_a.concat(data.meta[page].linkurl).concat(link_b).concat(data.meta[page].name).concat(link_c).concat('</a>');
+                        // alert(xyz);
+                        //placeHolder1 = xyz.substring(xyz.indexOf('<input type="checkbox" class'), xyz.indexOf("<h4")).replace("page_deletions","privateVpublic").replace("delete","private_v_public");
+                        //placeHolder2 = xyz.substring(xyz.indexOf("<h4"), xyz.indexOf("</a>")).replace( "privateVpublic","page_deletions").replace( "private_v_public","delete");
+                        placeHolder1 = xyz.substring(xyz.indexOf('<input type="checkbox" class'), xyz.indexOf("<h4"));
+                        placeHolder2 = xyz.substring(xyz.indexOf("<h4"), xyz.indexOf("</a>"));
+                        placeHolder0 = xyz.substring(0, xyz.indexOf('<input type="checkbox" class'));
+
+
+                        //Got many things from other places: this one: http://stackoverflow.com/questions/3197702/html-checkbox-onclick-called-in-javascript for the onchange
+                        placeHolder2 = placeHolder2.replace('name="private_v_public"', 'onchange="private_or_public_checkbox(this);" name="private_v_public"');
+
+                        //KCalert(placeHolder1);
+                        $("#pages_on_the_fly").append(placeHolder0 +  placeHolder2 + placeHolder1+placeHolder3);   //changed
+                       
+                        link_c = "</h4>";                      //changed
+                        privacyAdder = "";                   //changed 
                         link_a = stringer;
                         //console.log(data.meta[page].name);
                         //console.log(data.meta[page].linkurl);
@@ -260,6 +355,7 @@ $(document).ready(function(){
                     }
                     popup();
                     private_public_checkbox();
+                    apply_bootstrapSwitches_page_slider();
                     console.log("We are here again!");
                     // alert(category_slug)
                 }
@@ -275,7 +371,7 @@ $(document).ready(function(){
     
     //for deleting categories
     $(function () {
-        $("#delete_categories_button").click(function () {
+        $("#delete_categories_button.btn-primary").click(function () {
             //  e.preventDefault();
             var categories_for_deletion = "";
             //below taken from StackOverflow user113716
@@ -343,7 +439,7 @@ $(document).ready(function(){
          
     //for Adding Categories
     $(function () {
-        $('#add_category_button').click(function () {
+        $('#add_category_button.btn-primary').click(function () {
             jPrompt('Type In The Category Name:', '...', 'Prompt Dialog', function (r) {
                 //validateCategory(R);
                 console.log(r);
@@ -365,6 +461,9 @@ $(document).ready(function(){
         });
     });
     
+
+
+
     //for Adding Pages
     $(function () {
         var url = "";
@@ -377,7 +476,7 @@ $(document).ready(function(){
         //var polarity_score ="";
         //var subjectivity_score ="";
 
-        $("#add_page_button").click(function () {
+        $("#add_page_button.btn-primary").click(function () {
             jPrompt('Enter URL', 'Value goes here!', 'Adding a Page', function (r) {
                 if (r) {
                     url = r;
@@ -398,20 +497,25 @@ $(document).ready(function(){
                                             category_slug = data.meta[0].category_slug
                                            
                                             //repopulate list
-                                            var link_a1 = "<li><input type=\"checkbox\" class=\"page_deletions\" id=\"";//+{{savedPage.pk}}+
+                                            var link_a1 = "<a href=\"#\" class=\"list-group-item \"><input type=\"checkbox\" class=\"page_deletions other\" id=\"";//+{{savedPage.pk}}+        //changed
                                             var link_a2 = "\" name=\"delete\" value=\"".concat(category_slug);//+{{category_slug}}+
                                             link_a2 = link_a2.concat("\"/>");
-                                            var jaw = ' <a class="openNewWindow" id="';                   //
+                                            var jaw = ' <h4 class="openNewWindow" id="';                   //changed           //
                                             var jaw2 = "\" href=\""                                        //
 
 
                                             var link_a = link_a2.concat(jaw);
                                             // link_a = "<li><a href=\"";
                                             var link_b = "\">";
-                                            var link_c = "</a>";//
+                                            var link_c = "</h4>";                                          //changed
                                             var stringer = "";
-                                            var privacyAdder = "</li>";
+                                            var privacyAdder = "";                                          //changed
                                             // $("#saved_pages_list").append("<ul id=\"pages_on_the_fly\"></ul>");
+                                            var xyz = "";
+                                            var placeHolder1 = "";
+                                            var placeHolder2 = "";
+                                            var placeHolder0 = "";
+                                            var placeHolder3 = "</a>";
                                             for (page = 0; page < data.meta.length; page++) {
                                                 stringer = link_a;
                                                 link_a = link_a + data.meta[page].pagepk.toString();           //
@@ -421,16 +525,29 @@ $(document).ready(function(){
 
                                                 //alert("status of page"+data.meta[page].pagestatus.toString());
                                                 if (data.meta[page].pagestatus.toString() === "true") {
-                                                    privacyAdder = " <input type=\"checkbox\" id=\"" + data.meta[page].pagepk.toString() + "\" class=\"privateVpublic\" name=\"private_v_public\" value=\"public\" checked /> " + privacyAdder;
+                                                    privacyAdder = " <input type=\"checkbox\" id=\"" + data.meta[page].pagepk.toString() + "\" class=\"privateVpublic other\" name=\"private_v_public\" value=\"public\" checked /> " + privacyAdder;
                                                 } else {
-                                                    privacyAdder = " <input type=\"checkbox\" id=\"" + data.meta[page].pagepk.toString() + "\" class=\"privateVpublic\" name=\"private_v_public\" value=\"public\" /> " + privacyAdder;
+                                                    privacyAdder = " <input type=\"checkbox\" id=\"" + data.meta[page].pagepk.toString() + "\" class=\"privateVpublic other\" name=\"private_v_public\" value=\"public\" /> " + privacyAdder;
                                                 }
                                                 link_c = link_c + privacyAdder;
 
+                                                xyz = link_a.concat(data.meta[page].linkurl).concat(link_b).concat(data.meta[page].name).concat(link_c).concat('</a>');
+                                                // alert(xyz);
+                                                placeHolder1 = xyz.substring(xyz.indexOf('<input type="checkbox" class'), xyz.indexOf("<h4"));
+                                                placeHolder2 = xyz.substring(xyz.indexOf("<h4"), xyz.indexOf("</a>"));
+                                                placeHolder0 = xyz.substring(0, xyz.indexOf('<input type="checkbox" class'));
 
-                                                $("#pages_on_the_fly").append(link_a.concat(data.meta[page].linkurl).concat(link_b).concat(data.meta[page].name).concat(link_c));
-                                                link_c = "</a>";
-                                                privacyAdder = "</li>";
+
+
+                                                //placeHolder1 = placeHolder2.substring(0, '<input type="checkbox"') + placeHolder1 + placeHolder2.substring('<input type="checkbox"', placeHolder2.length);
+                                                //alert(placeHolder1);
+
+                                                //Got many things from other places: this one: http://stackoverflow.com/questions/3197702/html-checkbox-onclick-called-in-javascript for the onchange
+                                                placeHolder2 = placeHolder2.replace('name="private_v_public"', 'onchange="private_or_public_checkbox(this);" name="private_v_public"');
+
+                                                $("#pages_on_the_fly").append(placeHolder0 + placeHolder2 + placeHolder1+ placeHolder3);   //changed
+                                                link_c = "</h4>";                      //changed
+                                                privacyAdder = "";                   //changed 
                                                 link_a = stringer;
                                                 //console.log(data.meta[page].name);
                                                 //console.log(data.meta[page].linkurl);
@@ -438,13 +555,27 @@ $(document).ready(function(){
                                             }
                                             popup();
                                             private_public_checkbox();
+                                            apply_bootstrapSwitches_page_slider();
+
                                             if (data.meta[0].created === "true") {
                                                 var a=data.meta[0].categorypk;//pk
                                                 var b=category_slug;//slug
-                                                var c=data.meta[0].categoryname;//name
-                                                var htML='<li><input type="checkbox" class="category_deletions" id="'+a+'" name="delete" value="'+a+'"/> <a class="category_link" id="'+b+'" href="#">'+c+'</a></li>';
+                                                var c = data.meta[0].categoryname;//name
+
+                                                var htML = ' <a href="#" class="list-group-item ">' +
+                                    '<h4 class="list-group-item-heading category_link" id="' + b + '">' + c + '</h4>' +
+                                    '<input type="checkbox" class="category_deletions other" id="' + a + '" name="delete" value="' + a + '" /> </a>';
+
+
+
+
+
+                                                //var htML='<li><input type="checkbox" class="category_deletions" id="'+a+'" name="delete" value="'+a+'"/> <a class="category_link" id="'+b+'" href="#">'+c+'</a></li>';
 
                                                 $("#list_of_categories").append(htML);
+                                                $(".category_deletions").data("on-text", "Delete");
+                                                $(".category_deletions").data("off-text", "Keep");
+                                                $(".category_deletions").bootstrapSwitch();
                                             }
 
                                         }//,
@@ -467,6 +598,8 @@ $(document).ready(function(){
             //$("#okay").hide();
             //alert(this.id);
             var category_slug = this.id;
+            var xSlug = toTitleCase(category_slug);
+            $(".add_the_category_name").text(xSlug + " Page(s)!");
             //console.log("We are here!");
 
             //alert('okay');
@@ -492,20 +625,25 @@ $(document).ready(function(){
 
 
 
-                    var link_a1 = "<li><input type=\"checkbox\" class=\"page_deletions\" id=\"";//+{{savedPage.pk}}+
+                    var link_a1 = "<a href=\"#\" class=\"list-group-item \"><input type=\"checkbox\" class=\"page_deletions other\" id=\"";//+{{savedPage.pk}}+        //changed
                     var link_a2="\" name=\"delete\" value=\"".concat(category_slug);//+{{category_slug}}+
                     link_a2 = link_a2.concat("\"/>");
 
-                    var jaw = ' <a class="openNewWindow" id="';                   //
+                    var jaw = ' <h4 class="openNewWindow" id="';                   //changed               //
                     var jaw2 = "\" href=\""                                        //
 
 
                     var link_a = link_a2.concat(jaw);
                      // link_a = "<li><a href=\"";
                     var link_b = "\">";
-                    var link_c = "</a>";//
+                    var link_c = "</h4>";                                          //changed
                     var stringer = "";
-                    var privacyAdder = "</li>";//
+                    var privacyAdder = "";                                          //changed
+                    var xyz = "";
+                    var placeHolder1 = "";
+                    var placeHolder2 = "";
+                    var placeHolder0 = "";
+                    var placeHolder3 = "</a>";
                    // $("#saved_pages_list").append("<ul id=\"pages_on_the_fly\"></ul>");
                     for (page = 0; page < data.meta.length; page++) {
                         stringer = link_a;
@@ -516,17 +654,38 @@ $(document).ready(function(){
 
                         //alert("status of page"+data.meta[page].pagestatus.toString());
                         if (data.meta[page].pagestatus.toString() === "true") {
-                            privacyAdder = " <input type=\"checkbox\" id=\"" + data.meta[page].pagepk.toString() + "\" class=\"privateVpublic\" name=\"private_v_public\" value=\"public\" checked /> " + privacyAdder;
+                            privacyAdder = " <input type=\"checkbox\" id=\"" + data.meta[page].pagepk.toString() + "\" class=\"privateVpublic other\" name=\"private_v_public\" value=\"public\" checked /> " + privacyAdder;
                         } else {
-                            privacyAdder = " <input type=\"checkbox\" id=\"" + data.meta[page].pagepk.toString() + "\" class=\"privateVpublic\" name=\"private_v_public\" value=\"public\" /> " + privacyAdder;
+                            privacyAdder = " <input type=\"checkbox\" id=\"" + data.meta[page].pagepk.toString() + "\" class=\"privateVpublic other\" name=\"private_v_public\" value=\"public\" /> " + privacyAdder;
                         }
                         link_c = link_c + privacyAdder;
 
 
+                        xyz = link_a.concat(data.meta[page].linkurl).concat(link_b).concat(data.meta[page].name).concat(link_c).concat('</a>');
+                       // alert(xyz);
+                        placeHolder1 = xyz.substring(xyz.indexOf('<input type="checkbox" class'), xyz.indexOf("<h4"));
+                        placeHolder2 = xyz.substring(xyz.indexOf("<h4"), xyz.indexOf("</a>"));
+                        placeHolder0 = xyz.substring(0, xyz.indexOf('<input type="checkbox" class'));
+                        
 
-                        $("#pages_on_the_fly").append(link_a.concat(data.meta[page].linkurl).concat(link_b).concat(data.meta[page].name).concat(link_c));
-                        link_c = "</a>";
-                        privacyAdder = "</li>";
+                        //alert(placeHolder0 + "       is Place Holder0");
+                        //alert(placeHolder1 + "       is Place Holder1");
+                       // alert(placeHolder2 + "       is Place Holder2");
+                        //alert(placeHolder3 + "       is Place Holder3");
+
+
+                       // //alert(placeHolder2 + "         place")
+                      //  placeHolder1 = placeHolder2.substring(0, '<input type="checkbox"') + " <br/>"+ placeHolder1 + placeHolder2.substring('<input type="checkbox"', placeHolder2.length);
+                        //// alert(placeHolder1);
+                        // alert(placeHolder0 + placeHolder1 + placeHolder2 + placeHolder3);
+
+                        //Got many things from other places: this one: http://stackoverflow.com/questions/3197702/html-checkbox-onclick-called-in-javascript for the onchange
+                        placeHolder2 = placeHolder2.replace('name="private_v_public"', 'onchange="private_or_public_checkbox(this);" name="private_v_public"');
+                       // alert(placeHolder2);
+                        $("#pages_on_the_fly").append(placeHolder0 + placeHolder2+ placeHolder1+ placeHolder3);   //changed
+                        //private_public_checkbox();
+                        link_c = "</h4>";                      //changed
+                        privacyAdder = "";                   //changed 
                         link_a = stringer;
 
 
@@ -536,6 +695,7 @@ $(document).ready(function(){
                     }
                     popup();
                     private_public_checkbox();
+                    apply_bootstrapSwitches_page_slider();
                     console.log("We are here again!");
                    // alert(category_slug)
                 },
@@ -575,7 +735,7 @@ function doAlert(message) {
 //        return cookieValue;
 //    }
 
-
+//THIS CODE WAS TAKEN FOR GITHUB CSRF TOKENS!!!! There was a website that referred to it.
 $(function () {
 
 

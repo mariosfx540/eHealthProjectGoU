@@ -1,4 +1,4 @@
-import os
+﻿import os
 import email
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'eHealthCaringWeb.settings')
 
@@ -33,11 +33,11 @@ def populate():
         print oj.username 
     
     if (bla1==True):
-        User.objects.get_by_natural_key("blabla1").delete()
+        User.objects.get_by_natural_key("Jill").delete()
     if (bla2==True):
-        User.objects.get_by_natural_key("blabla2").delete()
+        User.objects.get_by_natural_key("Bob").delete()
     if (bla3==True):
-        User.objects.get_by_natural_key("blabla3").delete()
+        User.objects.get_by_natural_key("Jen").delete()
     
 
 
@@ -86,5 +86,5 @@ def add_Page(titl, cat, vis, link, summ, flesch, polarity, subjectivity):
 
 # Start execution here!
 if __name__ == '__main__':
-    print "Starting eHealth population script..."
+    print "Starting eHealth DELETION script..."
     populate()

@@ -14,14 +14,14 @@ class Searcher(models.Model):
         )#
 
     searcher = models.OneToOneField(User)
-    username= models.CharField(max_length=40, unique=True)
-    password= models.CharField(max_length=32);
+    #username= models.CharField(max_length=40, unique=True, default=None)
+    #password= models.CharField(max_length=32);
     
     
     email= models.EmailField()
     name= models.CharField(max_length=1000)
     surname=models.CharField(max_length=1000)
-    age=models.PositiveIntegerField()
+    age=models.IntegerField(default=0)
     gender=models.CharField(max_length=6, choices=GENDER_OPTIONS)
     # category_list=models.ForeignKey(category_list)
     # search_history=models.ForeignKey(search_history)
