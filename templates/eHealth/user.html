@@ -14,7 +14,7 @@
 
 
     <script src="{{ STATIC_URL }}user_jQuery_functions.js"></script>
-    <!--<link rel="stylesheet" href="{{ STATIC_URL }}stylesheet.css" />-->
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}user_stylesheet.css" />
 
    {% endblock %}
     
@@ -32,7 +32,7 @@
                         <ul id="userINFO" class="list-group">
                             <li class="list-group-item" id="name_li">Name: {{ userInformation.name }} {{ userInformation.surname }}</li>
                             <li class="list-group-item" id="age_li">Age: {{ userInformation.age }}</li>
-                            <li class="list-group-item" id="username_li">Username: {{ userInformation.username }}</li>
+                            <li class="list-group-item" id="username_li">Username: {{ user.username }}</li>
                             <li class="list-group-item" id="email_li">Email: {{ userInformation.email }}</li>
                             <li class="list-group-item" id="gender_li">Gender: {{ userInformation.gender }}</li>
                         </ul>
@@ -71,8 +71,8 @@
                         <h3>Your Categories!!!</h3>
 
                 
-                        <div id="div_containing_list_of_categories" class="list-group" style="height:300px; overflow:hidden; overflow-y:scroll;">
-                           
+                        <div id="div_containing_list_of_categories" class="list-group" >
+                       
                             <div id="list_of_categories">
                                 {% for category in cateogoryList %}
                                 <a href="#" class="list-group-item ">
@@ -91,40 +91,37 @@
                         </div>
 
                     
-                        <p><a id="add_category_button" href="#" class="btn btn-primary" role="button">Add a category!</a> <a href="#" class="btn btn-primary" id="delete_categories_button" role="button">Delete Categories</a></p>
+                        <p><a id="add_category_button" href="#" class="btn btn-primary" role="button">Add a category!</a> <a href="#" class="btn btn-primary" id="delete_categories_button" role="button">Delete Category(ies)</a></p>
                     </div>
                 </div>
             </div>
 
 
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-5">
                 <div class="thumbnail">
                     <div class="caption">
-                        <h3>Your Pages!!!</h3>
-
-
-                        <div id="saved_pages_list col-md-4 col-lg-4 text-center ccolumn3">
-                       
-
-                            <ul id="pages_on_the_fly">
+                        <h3 class="add_the_category_name ">Your Pages!!!</h3>
+                        
+                        
+                        <div id="saved_pages_list ">
+                            <div id="pages_on_the_fly" class="list-group" >
                                 {% for savedPage in savedPages %}
-                                <li>
-                                    <a class="openNewWindow" id="{{savedPage.pk}}" href="{{savedPage.linkURL}}"> {{savedPage.title}} </a>
 
+                                <a href="#" class="list-group-item">
+
+                                    <p></p>
+                                    <h4 class="openNewWindow" id="{{savedPage.pk}}" href="{{savedPage.linkURL}}"> {{savedPage.title}} </h4>
+                               
+                                
+                                 </a>                                                              
                                     <!--Rembember that we have to do a Javacript post check to see which check box is which-->
-                                    <!-- <input type="checkbox" id="{savedPage.pk}}" class="privateVpublic" name="private_v_public" value="public" />-->
-
-                                </li>
+                                   
                                 {% endfor %}
-                            </ul>
-                            <!--<button id=\"add_page_button\">Add a page!</button>-->
-                            <button id="add_page_button">Add a page!</button>
+                            </div>
+                            <!--<button id=\"add_page_button\">Add-->
                         </div>
-
-
-
-
-                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        <!--<button id=""> Delete Page</button>-->
+                        <p><a href="#" id="add_page_button" class="btn btn-primary" role="button">Add a page!</a> <a href="#" class="btn btn-primary" id="delete_pages_button" role="button">Delete Page(s)</a></p>
                     </div>
                 </div>
             </div>

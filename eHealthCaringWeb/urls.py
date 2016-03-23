@@ -12,6 +12,10 @@ class MyRegistrationView(RegistrationView):
         print request.email
         #searcher.age=
         searcher= Searcher.objects.create(searcher=request, age=3)
+        searcher.age=0
+        searcher.email=request.email
+        searcher.name= "Add in your info"
+        searcher.save()
         #searcher.username
         #sear
         #searcher.save()

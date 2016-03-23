@@ -2,6 +2,18 @@
 
 {% load staticfiles %}
 
+{% block otherSources %}
+
+<script src="{{ STATIC_URL }}searching_jQuery_func.js"></script>
+
+
+<link rel="stylesheet" href="{{ STATIC_URL }}jquery.alerts.css">
+<script src="{{ STATIC_URL }}jquery.alerts.js"></script>
+
+
+{% endblock %}
+
+
 {% block body_block %}
 
         <div class="searching col-md-5" id="query_2">
@@ -59,24 +71,26 @@
                         <h4>
                             <ol>
                                 {% for result in bing_list %}
-                                <li><a style="text-decoration: none" class="hover_element" href="{{ result.url }}">{{ result.title }}
-                                <div class="pop-up">
+                                <li>
+                                    <a style="text-decoration: none" class="hover_element openNewWindow " href="{{ result.url }}">
+                                        {{ result.title }}
+                                        <div class="pop-up">
 
-                                    <br />
-                                    <h5>{{ result.summary }}</h5>
-                                    <h5 id="bingSubj">Subjectivity: {{ result.subj }}</h5>
-                                    <h5 id="bingPola">Polarity: {{ result.pola }}</h5>
-                                    <h5 id="bingreada">Readability: {{ result.reada }}</h5>
+                                            <br />
+                                            <h5>{{ result.summary }}</h5>
+                                            <h5 id="bingSubj">Subjectivity: {{ result.subj }}</h5>
+                                            <h5 id="bingPola">Polarity: {{ result.pola }}</h5>
+                                            <h5 id="bingreada">Readability: {{ result.reada }}</h5>
 
 
 
-                                </div>
-                                </a><div class="dropdown"><button class="btn btn-primary dropdown-toggle mybtn" type="button" data-toggle="dropdown" data-content="Some content in the popover">SaveTo
-                                    <span class="caret"></span></button><ul class="dropdown-menu">
-                                        <li><a href="#">HTML</a></li>
-                                        <li><a href="#">CSS</a></li>
-                                        <li><a href="#">JavaScript</a></li>
-                                        </ul></div></li>
+                                        </div>
+                                    </a>
+
+                                    <button class="btn btn-primary dropdown-toggle mybtn savePage" id="{{ result.url }}" type="button" data-toggle="dropdown" data-content="Some content in the popover">
+                                        SaveTo
+                                    </button>
+                                </li>
                                 {% endfor %}
 
                             </ol>
@@ -89,7 +103,7 @@
                         <h4>
                             <ol>
                                 {% for result in med %}
-                                <li><a style="text-decoration: none" class="hover_element" href="{{ result.url }}">{{ result.title }}
+                                <li><a style="text-decoration: none" class="hover_element openNewWindow" href="{{ result.url }}">{{ result.title }}
                                 <div class="pop-up">
                                         <br/>
                                         <h5>{{ result.summary }}</h5>
@@ -98,12 +112,11 @@
                                         <h5 id="bingreada">Readability: {{ result.reada }}</h5>
                                     </div>
 
-                                </a><div class="dropdown"><button class="btn btn-primary dropdown-toggle mybtn" type="button" data-toggle="dropdown" data-content="Some content in the popover">SaveTo
-                                    <span class="caret"></span></button><ul class="dropdown-menu">
-                                        <li><a href="#">HTML</a></li>
-                                        <li><a href="#">CSS</a></li>
-                                        <li><a href="#">JavaScript</a></li>
-                                        </ul></div></li>
+                                </a>
+                                    <button class="btn btn-primary dropdown-toggle mybtn savePage" id="{{ result.url }}" type="button" data-toggle="dropdown" data-content="Some content in the popover">SaveTo
+                                    </button>
+                                       
+                                    </li>
                                 {% endfor %}
                             </ol>
                         </h4>
@@ -115,7 +128,7 @@
                         <h4>
                             <ol>
                                 {% for result in health %}
-                                <li><a style="text-decoration: none" class="hover_element" href="{{ result.url }}">{{ result.title }}
+                                <li><a style="text-decoration: none" class="hover_element openNewWindow" href="{{ result.url }}">{{ result.title }}
                                 <div class="pop-up">
                                         <br/>
                                         <h5>{{ result.summary }}</h5>
@@ -123,12 +136,10 @@
                                         <h5 id="bingPola">Polarity: {{ result.pola }}</h5>
                                         <h5 id="bingreada">Readability: {{ result.reada }}</h5>
                                     </div>
-                                </a><div class="dropdown"><button class="btn btn-primary dropdown-toggle mybtn" type="button" data-toggle="dropdown" data-content="Some content in the popover">SaveTo
-                                    <span class="caret"></span></button><ul class="dropdown-menu">
-                                        <li><a href="#">HTML</a></li>
-                                        <li><a href="#">CSS</a></li>
-                                        <li><a href="#">JavaScript</a></li>
-                                        </ul></div></li>
+                                </a>
+                                <button class="btn btn-primary dropdown-toggle mybtn savePage" id="{{ result.url }}" type="button" data-toggle="dropdown" data-content="Some content in the popover">SaveTo
+                                   </button>
+                                        </li>
                                 {% endfor %}
                             </ol>
                         </h4>
@@ -140,19 +151,19 @@
                         <h4>
                             <ol>
                                 {% for result in all_results %}
-                                <li><a style="text-decoration: none" class="hover_element" href="{{ result.url }}">{{ result.title }}
+                                <li><a style="text-decoration: none" class="hover_element openNewWindow" href="{{ result.url }}">{{ result.title }}
                                 <div class="pop-up">
                                         <h5>{{ result.summary }}</h5>
                                         <h5 id ="bingSubj">Subjectivity: {{ result.subj }}</h5>
                                         <h5 id="bingPola">Polarity: {{ result.pola }}</h5>
                                         <h5 id="bingreada">Readability: {{ result.reada }}</h5>
                                     </div>
-                                </a>{% if user.is_authenticated %}<div class="dropdown"><button class="btn btn-primary dropdown-toggle mybtn" type="button" data-toggle="dropdown" data-content="Some content in the popover">SaveTo
-                                    <span class="caret"></span></button><ul class="dropdown-menu">
-                                        <li><a href="#">HTML</a></li>
-                                        <li><a href="#">CSS</a></li>
-                                        <li><a href="#">JavaScript</a></li>
-                                        </ul></div>{% endif %}</li>
+                                </a>{% if user.is_authenticated %}
+                                    <button class="btn btn-primary dropdown-toggle mybtn savePage" id="{{ result.url }}" type="button" data-toggle="dropdown" data-content="Some content in the popover">SaveTo
+                                    </button>
+                                    
+                                    {% endif %}
+                                </li>
                                 {% endfor %}
                             </ol>
                         </h4>
