@@ -18,9 +18,36 @@ function popup() {
 
 $(document).ready(function () {
     popup();
+    //Got this from Stack Overflow - a lot of knowlege/things from there
+    //http://stackoverflow.com/questions/15093112/keyup-event-not-triggered-inside-twitter-bootstrap-modal-form
+   // $("body").on('keyup', "#query", suggestions());
+
 });
 
 
+
+
+//function suggestions() {
+
+//        //alert("Hello!");
+//        var constant_string2 = 'Do you mean? ';
+//        var constant_string = "(click me to search)";
+
+//        //$("#adding_suggestion").text(function () { return constant_string2 + $("#query").val() + constant_string; });
+
+     
+
+//        //$.ajax({
+//        //    type: "POST",
+//        //    url: "/eHealth/Privacy",
+//        //    data: { pk: primarykey, status: isPublic },
+//        //    success: function (data) {
+//        //        //include below?
+//        //        //$(".privateVpublic").removeAttr('checked');
+//        //    }
+//        //});
+
+//}
 
 
 

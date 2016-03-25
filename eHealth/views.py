@@ -17,6 +17,12 @@ from models import Page,Category,Searcher
 
 
 
+#did not finish Ajax suggestions
+def ajax_suggestions(request):
+    typedSoFar= request.POST.getlist('typedSoFar')[0]
+    print typedSoFar
+
+    return HttpResponse(ajax_suggestion)
 
 
 
